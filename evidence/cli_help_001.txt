@@ -1,0 +1,11 @@
+﻿usage: sca-unit [-h] [--output OUTPUT] first second
+
+Compare two structural JSON files and generate a structural-assessment report.
+
+positional arguments:
+  first                Path to the first structural JSON file.
+  second               Path to the second structural JSON file.
+
+options:
+  -h, --help           show this help message and exit
+  --output, -o OUTPUT  Optional path for the generated JSON report.

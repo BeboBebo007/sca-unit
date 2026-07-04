@@ -1,0 +1,16 @@
+{
+  "identity": "industrial-system-observation",
+  "nodes": [
+    "sensor",
+    "controller",
+    "actuator",
+    "power",
+    "backup"
+  ],
+  "edges": [
+    ["sensor", "controller"],
+    ["controller", "actuator"],
+    ["power", "controller"],
+    ["backup", "controller"]
+  ]
+}

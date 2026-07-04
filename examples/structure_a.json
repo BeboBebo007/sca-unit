@@ -1,0 +1,14 @@
+{
+  "identity": "industrial-system-baseline",
+  "nodes": [
+    "sensor",
+    "controller",
+    "actuator",
+    "power"
+  ],
+  "edges": [
+    ["sensor", "controller"],
+    ["controller", "actuator"],
+    ["power", "controller"]
+  ]
+}
