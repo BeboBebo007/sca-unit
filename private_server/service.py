@@ -2,9 +2,12 @@ import json
 from pathlib import Path
 from typing import Any
 
+from sca_unit.assessment import assess_structures
+from sca_unit.models import StructuralState
+
 
 class InputValidationError(ValueError):
-    """يُرفع عند رفض ملف إدخال غير صالح."""
+    """Raised when an invalid input file is rejected."""
 
 
 def validate_structure_file(file_path: str | Path) -> dict[str, Any]:
@@ -45,3 +48,36 @@ def validate_structure_file(file_path: str | Path) -> dict[str, Any]:
         raise InputValidationError("The edges field must be a list")
 
     return content
+
+
+def load_structural_state(file_path: str | Path) -> StructuralState:
+    content = validate_structure_file(file_path)
+
+    try:
+        return StructuralState.create(
+            identity=content["identity"],
+            nodes=content["nodes"],
+            edges=content["edges"],
+        )
+    except (TypeError, ValueError) as exc:
+        raise InputValidationError(f"Invalid structural data: {exc}") from exc
+
+
+def assess_structure_files(
+    first_file: str | Path,
+    second_file: str | Path,
+) -> dict[str, Any]:
+    first = load_structural_state(first_file)
+    second = load_structural_state(second_file)
+
+    assessment = assess_structures(first, second)
+
+    return {
+        "schema_version": "1.0",
+        "engine": {
+            "name": "SCA-Unit Public Structural Assessment",
+            "scope": "non-proprietary prototype",
+            "version": "0.2.0",
+        },
+        "assessment": assessment.as_dict(),
+    }
