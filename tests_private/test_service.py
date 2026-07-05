@@ -176,3 +176,34 @@ def test_report_and_audit_share_request_id(tmp_path):
 
     assert report["request_id"]
     assert report["request_id"] == saved["request_id"]
+
+def test_assess_structure_payloads_returns_report(tmp_path):
+    from private_server.service import (
+        assess_structure_payloads,
+    )
+
+    audit_log = tmp_path / "payload_audit.jsonl"
+
+    report = assess_structure_payloads(
+        {
+            "identity": "payload-baseline",
+            "nodes": ["a", "b"],
+            "edges": [["a", "b"]],
+        },
+        {
+            "identity": "payload-observation",
+            "nodes": ["a", "b", "c"],
+            "edges": [["a", "b"]],
+        },
+        audit_log_path=audit_log,
+    )
+
+    assert report["request_id"]
+    assert report["assessment"]["first_identity"] == (
+        "payload-baseline"
+    )
+    assert report["assessment"]["second_identity"] == (
+        "payload-observation"
+    )
+    assert report["assessment"]["verdict"] == "compatible"
+    assert audit_log.exists()
