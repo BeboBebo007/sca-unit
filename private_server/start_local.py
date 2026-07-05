@@ -45,9 +45,16 @@ def load_local_environment(
 
         os.environ[key] = value
 
-    if not os.environ.get("SCA_UNIT_API_KEY", "").strip():
+    api_key = os.environ.get("SCA_UNIT_API_KEY", "").strip()
+
+    if not api_key:
         raise EnvironmentConfigurationError(
             "SCA_UNIT_API_KEY is not configured"
+        )
+
+    if len(api_key) < 32:
+        raise EnvironmentConfigurationError(
+            "SCA_UNIT_API_KEY must contain at least 32 characters"
         )
 
 
