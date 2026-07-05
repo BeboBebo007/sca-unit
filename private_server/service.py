@@ -78,7 +78,14 @@ def assess_structure_files(
 
     assessment = assess_structures(first, second)
 
+    audit_record = create_audit_record(
+        first_identity=first.identity,
+        second_identity=second.identity,
+        status="completed",
+    )
+
     report = {
+        "request_id": audit_record.request_id,
         "schema_version": "1.0",
         "engine": {
             "name": "SCA-Unit Public Structural Assessment",
@@ -89,11 +96,6 @@ def assess_structure_files(
     }
 
     if audit_log_path is not None:
-        record = create_audit_record(
-            first_identity=first.identity,
-            second_identity=second.identity,
-            status="completed",
-        )
-        append_audit_record(record, audit_log_path)
+        append_audit_record(audit_record, audit_log_path)
 
     return report

@@ -136,3 +136,43 @@ def test_assessment_writes_audit_record(tmp_path):
     assert saved["status"] == "completed"
     assert "nodes" not in saved
     assert "edges" not in saved
+
+def test_report_and_audit_share_request_id(tmp_path):
+    first_file = tmp_path / "first.json"
+    second_file = tmp_path / "second.json"
+    audit_log = tmp_path / "audit.jsonl"
+
+    first_file.write_text(
+        json.dumps(
+            {
+                "identity": "baseline",
+                "nodes": ["a", "b"],
+                "edges": [["a", "b"]],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    second_file.write_text(
+        json.dumps(
+            {
+                "identity": "observation",
+                "nodes": ["a", "b"],
+                "edges": [["a", "b"]],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = assess_structure_files(
+        first_file,
+        second_file,
+        audit_log_path=audit_log,
+    )
+
+    saved = json.loads(
+        audit_log.read_text(encoding="utf-8").strip()
+    )
+
+    assert report["request_id"]
+    assert report["request_id"] == saved["request_id"]
