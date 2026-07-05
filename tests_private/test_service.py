@@ -93,3 +93,46 @@ def test_assess_structure_files_returns_expected_report(tmp_path):
     assert report["assessment"]["first_identity"] == "first"
     assert report["assessment"]["second_identity"] == "second"
     assert report["assessment"]["verdict"] == "compatible"
+
+def test_assessment_writes_audit_record(tmp_path):
+    first_file = tmp_path / "first.json"
+    second_file = tmp_path / "second.json"
+    audit_log = tmp_path / "audit.jsonl"
+
+    first_file.write_text(
+        json.dumps(
+            {
+                "identity": "baseline",
+                "nodes": ["a", "b"],
+                "edges": [["a", "b"]],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    second_file.write_text(
+        json.dumps(
+            {
+                "identity": "observation",
+                "nodes": ["a", "b", "c"],
+                "edges": [["a", "b"]],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assess_structure_files(
+        first_file,
+        second_file,
+        audit_log_path=audit_log,
+    )
+
+    saved = json.loads(
+        audit_log.read_text(encoding="utf-8").strip()
+    )
+
+    assert saved["first_identity"] == "baseline"
+    assert saved["second_identity"] == "observation"
+    assert saved["status"] == "completed"
+    assert "nodes" not in saved
+    assert "edges" not in saved

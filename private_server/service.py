@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from private_server.audit import append_audit_record, create_audit_record
 from sca_unit.assessment import assess_structures
 from sca_unit.models import StructuralState
 
@@ -39,7 +40,9 @@ def validate_structure_file(file_path: str | Path) -> dict[str, Any]:
         )
 
     if not isinstance(content["identity"], str) or not content["identity"].strip():
-        raise InputValidationError("The identity field must be a non-empty string")
+        raise InputValidationError(
+            "The identity field must be a non-empty string"
+        )
 
     if not isinstance(content["nodes"], list):
         raise InputValidationError("The nodes field must be a list")
@@ -60,19 +63,22 @@ def load_structural_state(file_path: str | Path) -> StructuralState:
             edges=content["edges"],
         )
     except (TypeError, ValueError) as exc:
-        raise InputValidationError(f"Invalid structural data: {exc}") from exc
+        raise InputValidationError(
+            f"Invalid structural data: {exc}"
+        ) from exc
 
 
 def assess_structure_files(
     first_file: str | Path,
     second_file: str | Path,
+    audit_log_path: str | Path | None = None,
 ) -> dict[str, Any]:
     first = load_structural_state(first_file)
     second = load_structural_state(second_file)
 
     assessment = assess_structures(first, second)
 
-    return {
+    report = {
         "schema_version": "1.0",
         "engine": {
             "name": "SCA-Unit Public Structural Assessment",
@@ -81,3 +87,13 @@ def assess_structure_files(
         },
         "assessment": assessment.as_dict(),
     }
+
+    if audit_log_path is not None:
+        record = create_audit_record(
+            first_identity=first.identity,
+            second_identity=second.identity,
+            status="completed",
+        )
+        append_audit_record(record, audit_log_path)
+
+    return report
