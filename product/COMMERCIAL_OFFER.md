@@ -1,8 +1,8 @@
-\# SCA-Unit Commercial Offer
+﻿# SCA-Unit Commercial Offer
 
 
 
-\## Product
+## Product
 
 
 
@@ -10,7 +10,7 @@ SCA-Unit Structural Compatibility Assessment
 
 
 
-\## Customer Problem
+## Customer Problem
 
 
 
@@ -18,7 +18,7 @@ Organizations often need to compare two system structures, configurations, archi
 
 
 
-\## Proposed Solution
+## Proposed Solution
 
 
 
@@ -26,37 +26,37 @@ SCA-Unit accepts two structural descriptions and returns a standardized assessme
 
 
 
-\- Node similarity
+- Node similarity
 
-\- Edge similarity
+- Edge similarity
 
-\- Overall compatibility
+- Overall compatibility
 
-\- Conflict score
+- Conflict score
 
-\- Compatibility verdict
+- Compatibility verdict
 
-\- Structured JSON report
-
-
-
-\## Initial Target Customers
+- Structured JSON report
 
 
 
-\- Software architecture teams
-
-\- Industrial systems teams
-
-\- Research laboratories
-
-\- Technical consulting companies
-
-\- Data and systems integration teams
+## Initial Target Customers
 
 
 
-\## Pilot Offer
+- Software architecture teams
+
+- Industrial systems teams
+
+- Research laboratories
+
+- Technical consulting companies
+
+- Data and systems integration teams
+
+
+
+## Pilot Offer
 
 
 
@@ -64,21 +64,21 @@ The initial pilot includes:
 
 
 
-\- Controlled access
+- Controlled access
 
-\- Assessment of selected structural files
+- Assessment of selected structural files
 
-\- Structured reports
+- Structured reports
 
-\- Technical onboarding
+- Technical onboarding
 
-\- Limited support
+- Limited support
 
-\- Confidential handling of customer inputs
+- Confidential handling of customer inputs
 
 
 
-\## Delivery Model
+## Delivery Model
 
 
 
@@ -90,17 +90,17 @@ Customers receive access to the service and reports without receiving the protec
 
 
 
-\## Pilot Pricing Hypothesis
+## Pilot Pricing Hypothesis
 
 
 
-\- Private demonstration: free or invitation-based
+- Private demonstration: free or invitation-based
 
-\- Small pilot project: 250 to 750 EUR
+- Small pilot project: 250 to 750 EUR
 
-\- Professional pilot: 1,000 to 3,000 EUR
+- Professional pilot: 1,000 to 3,000 EUR
 
-\- Recurring service: subscription or usage-based pricing
+- Recurring service: subscription or usage-based pricing
 
 
 
@@ -108,7 +108,7 @@ Final pricing requires validation with real customers.
 
 
 
-\## Current Limitations
+## Current Limitations
 
 
 
@@ -120,19 +120,19 @@ It does not yet include:
 
 
 
-\- Hosted customer accounts
+- Hosted customer accounts
 
-\- Online billing
+- Online billing
 
-\- Production authentication
+- Production authentication
 
-\- Commercial dashboard
+- Commercial dashboard
 
-\- Protected advanced SCA-Unit mechanisms
+- Protected advanced SCA-Unit mechanisms
 
 
 
-\## Commercial Goal
+## Commercial Goal
 
 
 
@@ -140,11 +140,11 @@ Obtain the first qualified pilot customer and validate:
 
 
 
-\- The customer problem
+- The customer problem
 
-\- The value of the report
+- The value of the report
 
-\- The preferred workflow
+- The preferred workflow
 
-\- The acceptable pricing model
+- The acceptable pricing model
 
