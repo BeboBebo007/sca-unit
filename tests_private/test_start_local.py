@@ -61,3 +61,35 @@ def test_weak_api_key_is_rejected(tmp_path, monkeypatch):
         match="at least 32 characters",
     ):
         load_local_environment(env_file)
+
+
+def test_excessively_long_api_key_is_rejected(tmp_path, monkeypatch):
+    monkeypatch.delenv("SCA_UNIT_API_KEY", raising=False)
+
+    env_file = tmp_path / ".env.local"
+    env_file.write_text(
+        "SCA_UNIT_API_KEY=" + ("a" * 129) + "\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(
+        EnvironmentConfigurationError,
+        match="must not exceed 128 characters",
+    ):
+        load_local_environment(env_file)
+
+
+def test_api_key_with_internal_whitespace_is_rejected(tmp_path, monkeypatch):
+    monkeypatch.delenv("SCA_UNIT_API_KEY", raising=False)
+
+    env_file = tmp_path / ".env.local"
+    env_file.write_text(
+        "SCA_UNIT_API_KEY=0123456789abcdef 0123456789abcdef\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(
+        EnvironmentConfigurationError,
+        match="must not contain whitespace",
+    ):
+        load_local_environment(env_file)

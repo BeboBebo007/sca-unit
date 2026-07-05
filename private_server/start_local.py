@@ -57,6 +57,16 @@ def load_local_environment(
             "SCA_UNIT_API_KEY must contain at least 32 characters"
         )
 
+    if len(api_key) > 128:
+        raise EnvironmentConfigurationError(
+            "SCA_UNIT_API_KEY must not exceed 128 characters"
+        )
+
+    if any(character.isspace() for character in api_key):
+        raise EnvironmentConfigurationError(
+            "SCA_UNIT_API_KEY must not contain whitespace"
+        )
+
 
 def main() -> None:
     load_local_environment()
