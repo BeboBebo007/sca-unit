@@ -8,37 +8,21 @@ from private_server.api import (
 )
 
 
-def test_process_assessment_request_returns_report(tmp_path):
-    first_file = tmp_path / "first.json"
-    second_file = tmp_path / "second.json"
+def test_process_payload_request_returns_report(tmp_path):
     audit_log = tmp_path / "audit.jsonl"
-
-    first_file.write_text(
-        json.dumps(
-            {
-                "identity": "baseline",
-                "nodes": ["a", "b"],
-                "edges": [["a", "b"]],
-            }
-        ),
-        encoding="utf-8",
-    )
-
-    second_file.write_text(
-        json.dumps(
-            {
-                "identity": "observation",
-                "nodes": ["a", "b", "c"],
-                "edges": [["a", "b"]],
-            }
-        ),
-        encoding="utf-8",
-    )
 
     report = process_assessment_request(
         {
-            "first_file": str(first_file),
-            "second_file": str(second_file),
+            "first_structure": {
+                "identity": "baseline",
+                "nodes": ["a", "b"],
+                "edges": [["a", "b"]],
+            },
+            "second_structure": {
+                "identity": "observation",
+                "nodes": ["a", "b", "c"],
+                "edges": [["a", "b"]],
+            },
             "audit_log": str(audit_log),
         }
     )
@@ -49,15 +33,25 @@ def test_process_assessment_request_returns_report(tmp_path):
     assert report["assessment"]["verdict"] == "compatible"
     assert audit_log.exists()
 
+    saved = json.loads(
+        audit_log.read_text(encoding="utf-8").strip()
+    )
 
-def test_missing_file_field_is_rejected():
+    assert saved["request_id"] == report["request_id"]
+
+
+def test_missing_structure_field_is_rejected():
     with pytest.raises(
         RequestValidationError,
         match="Missing required fields",
     ):
         process_assessment_request(
             {
-                "first_file": "first.json",
+                "first_structure": {
+                    "identity": "first",
+                    "nodes": [],
+                    "edges": [],
+                }
             }
         )
 
@@ -68,5 +62,18 @@ def test_non_object_request_is_rejected():
         match="JSON object",
     ):
         process_assessment_request(
-            ["first.json", "second.json"]
+            ["first", "second"]
+        )
+
+
+def test_file_path_request_is_rejected():
+    with pytest.raises(
+        RequestValidationError,
+        match="Missing required fields",
+    ):
+        process_assessment_request(
+            {
+                "first_file": "first.json",
+                "second_file": "second.json",
+            }
         )

@@ -5,7 +5,7 @@ from typing import Any
 
 from private_server.service import (
     InputValidationError,
-    assess_structure_files,
+    assess_structure_payloads,
 )
 
 
@@ -21,25 +21,30 @@ def process_assessment_request(
             "The request body must be a JSON object"
         )
 
-    required_fields = {"first_file", "second_file"}
-    missing_fields = sorted(required_fields - payload.keys())
+    required_fields = {
+        "first_structure",
+        "second_structure",
+    }
+    missing_fields = sorted(
+        required_fields - payload.keys()
+    )
 
     if missing_fields:
         raise RequestValidationError(
             f"Missing required fields: {', '.join(missing_fields)}"
         )
 
-    first_file = payload["first_file"]
-    second_file = payload["second_file"]
+    first_structure = payload["first_structure"]
+    second_structure = payload["second_structure"]
 
-    if not isinstance(first_file, str) or not first_file.strip():
+    if not isinstance(first_structure, dict):
         raise RequestValidationError(
-            "first_file must be a non-empty string"
+            "first_structure must be a JSON object"
         )
 
-    if not isinstance(second_file, str) or not second_file.strip():
+    if not isinstance(second_structure, dict):
         raise RequestValidationError(
-            "second_file must be a non-empty string"
+            "second_structure must be a JSON object"
         )
 
     audit_log = payload.get(
@@ -52,15 +57,15 @@ def process_assessment_request(
             "audit_log must be a non-empty string"
         )
 
-    return assess_structure_files(
-        first_file=first_file,
-        second_file=second_file,
+    return assess_structure_payloads(
+        first_structure=first_structure,
+        second_structure=second_structure,
         audit_log_path=audit_log,
     )
 
 
 class SCARequestHandler(BaseHTTPRequestHandler):
-    server_version = "SCAUnitLocalService/0.1"
+    server_version = "SCAUnitLocalService/0.2"
 
     def _send_json(
         self,
@@ -92,7 +97,8 @@ class SCARequestHandler(BaseHTTPRequestHandler):
                     "status": "ok",
                     "service": "SCA-Unit Local Private Service",
                     "scope": "non-proprietary prototype",
-                    "version": "0.1",
+                    "version": "0.2",
+                    "input_mode": "direct-structural-payload",
                 },
             )
             return
@@ -110,13 +116,23 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             )
             return
 
-        expected_api_key = os.environ.get("SCA_UNIT_API_KEY", "")
-        provided_api_key = self.headers.get("X-API-Key", "")
+        expected_api_key = os.environ.get(
+            "SCA_UNIT_API_KEY",
+            "",
+        )
+        provided_api_key = self.headers.get(
+            "X-API-Key",
+            "",
+        )
 
         if not expected_api_key:
             self._send_json(
                 503,
-                {"error": "Service API key is not configured"},
+                {
+                    "error": (
+                        "Service API key is not configured"
+                    )
+                },
             )
             return
 
@@ -135,13 +151,20 @@ class SCARequestHandler(BaseHTTPRequestHandler):
         if "application/json" not in content_type:
             self._send_json(
                 415,
-                {"error": "Content-Type must be application/json"},
+                {
+                    "error": (
+                        "Content-Type must be application/json"
+                    )
+                },
             )
             return
 
         try:
             content_length = int(
-                self.headers.get("Content-Length", "0")
+                self.headers.get(
+                    "Content-Length",
+                    "0",
+                )
             )
         except ValueError:
             self._send_json(
@@ -170,11 +193,17 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             payload = json.loads(
                 raw_body.decode("utf-8")
             )
-            report = process_assessment_request(payload)
+            report = process_assessment_request(
+                payload
+            )
         except UnicodeDecodeError:
             self._send_json(
                 400,
-                {"error": "Request body must use UTF-8"},
+                {
+                    "error": (
+                        "Request body must use UTF-8"
+                    )
+                },
             )
             return
         except json.JSONDecodeError:
@@ -224,6 +253,7 @@ def run_local_service(
     )
     print("Health endpoint: /health")
     print("Assessment endpoint: /assess")
+    print("Input mode: direct structural payload")
 
     try:
         server.serve_forever()
