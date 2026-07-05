@@ -100,6 +100,10 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             "Content-Length",
             str(len(encoded)),
         )
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Connection", "close")
+        self.close_connection = True
         self.end_headers()
         self.wfile.write(encoded)
 
