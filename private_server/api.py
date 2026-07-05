@@ -1,4 +1,5 @@
 import json
+import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 
@@ -106,6 +107,23 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             self._send_json(
                 404,
                 {"error": "Endpoint not found"},
+            )
+            return
+
+        expected_api_key = os.environ.get("SCA_UNIT_API_KEY", "")
+        provided_api_key = self.headers.get("X-API-Key", "")
+
+        if not expected_api_key:
+            self._send_json(
+                503,
+                {"error": "Service API key is not configured"},
+            )
+            return
+
+        if provided_api_key != expected_api_key:
+            self._send_json(
+                401,
+                {"error": "Unauthorized"},
             )
             return
 
