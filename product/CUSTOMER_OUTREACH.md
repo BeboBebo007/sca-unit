@@ -1,4 +1,4 @@
-SCA-Unit Initial Customer Outreach
+﻿SCA-Unit Initial Customer Outreach
 
 
 
@@ -26,17 +26,17 @@ The report includes:
 
 
 
-\- Node similarity
+- Node similarity
 
-\- Edge similarity
+- Edge similarity
 
-\- Overall compatibility score
+- Overall compatibility score
 
-\- Conflict score
+- Conflict score
 
-\- Compatibility verdict
+- Compatibility verdict
 
-\- Structured JSON output
+- Structured JSON output
 
 
 
@@ -67,4 +67,5 @@ Best regards,
 Bassam Alkarishy
 
 Founder — SCA-Unit
+
 
