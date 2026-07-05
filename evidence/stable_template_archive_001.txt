@@ -1,0 +1,4 @@
+﻿archive=SCA-Unit-stable-template-source-v1.zip
+size_bytes=107514
+created=2026-07-05
+purpose=reusable stable source snapshot
