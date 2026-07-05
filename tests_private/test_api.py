@@ -3,6 +3,7 @@ import json
 import pytest
 
 from private_server.api import (
+    api_keys_match,
     RequestValidationError,
     process_assessment_request,
 )
@@ -77,3 +78,20 @@ def test_file_path_request_is_rejected():
                 "second_file": "second.json",
             }
         )
+
+def test_api_keys_match_accepts_identical_keys():
+    assert api_keys_match(
+        "test-secret-key",
+        "test-secret-key",
+    )
+
+
+def test_api_keys_match_rejects_invalid_or_empty_keys():
+    assert not api_keys_match(
+        "test-secret-key",
+        "wrong-secret-key",
+    )
+    assert not api_keys_match(
+        "test-secret-key",
+        "",
+    )

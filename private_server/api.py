@@ -1,3 +1,4 @@
+import hmac
 import json
 import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -11,6 +12,19 @@ from private_server.service import (
 
 class RequestValidationError(ValueError):
     """Raised when an API request is invalid."""
+
+
+def api_keys_match(
+    expected_api_key: str,
+    provided_api_key: str,
+) -> bool:
+    if not expected_api_key or not provided_api_key:
+        return False
+
+    return hmac.compare_digest(
+        expected_api_key,
+        provided_api_key,
+    )
 
 
 def process_assessment_request(
@@ -136,7 +150,7 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             )
             return
 
-        if provided_api_key != expected_api_key:
+        if not api_keys_match(expected_api_key, provided_api_key):
             self._send_json(
                 401,
                 {"error": "Unauthorized"},
