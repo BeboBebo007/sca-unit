@@ -7,3 +7,5 @@ build/
 *.egg-info/
 .venv-test/
 .env.local
+
+SCA-Unit-stable-template-source-v1.zip
