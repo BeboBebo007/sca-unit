@@ -256,11 +256,20 @@ class SCARequestHandler(BaseHTTPRequestHandler):
         return
 
 
+class HardenedThreadingHTTPServer(ThreadingHTTPServer):
+    request_timeout_seconds = 5
+
+    def get_request(self):
+        request, client_address = super().get_request()
+        request.settimeout(self.request_timeout_seconds)
+        return request, client_address
+
+
 def run_local_service(
     host: str = "127.0.0.1",
     port: int = 8765,
 ) -> None:
-    server = ThreadingHTTPServer(
+    server = HardenedThreadingHTTPServer(
         (host, port),
         SCARequestHandler,
     )

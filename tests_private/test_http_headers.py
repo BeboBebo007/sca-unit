@@ -2,7 +2,7 @@ import threading
 from http.client import HTTPConnection
 from http.server import ThreadingHTTPServer
 
-from private_server.api import SCARequestHandler
+from private_server.api import HardenedThreadingHTTPServer, SCARequestHandler
 
 
 def test_health_response_includes_security_headers():
@@ -25,3 +25,31 @@ def test_health_response_includes_security_headers():
         server.shutdown()
         server.server_close()
         thread.join(timeout=2)
+
+
+def test_server_applies_connection_timeout(monkeypatch):
+    class DummySocket:
+        timeout = None
+
+        def settimeout(self, value):
+            self.timeout = value
+
+    dummy_socket = DummySocket()
+
+    monkeypatch.setattr(
+        ThreadingHTTPServer,
+        "get_request",
+        lambda self: (
+            dummy_socket,
+            ("127.0.0.1", 12345),
+        ),
+    )
+
+    server = object.__new__(
+        HardenedThreadingHTTPServer
+    )
+    request, address = server.get_request()
+
+    assert request is dummy_socket
+    assert address == ("127.0.0.1", 12345)
+    assert dummy_socket.timeout == 5
