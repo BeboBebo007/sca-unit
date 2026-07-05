@@ -6,15 +6,16 @@ build-backend = "setuptools.build_meta"
 name = "sca-unit"
 version = "0.2.0"
 description = "Structural compatibility assessment prototype"
+readme = "README.md"
 requires-python = ">=3.11"
 authors = [
     { name = "Bassam Alkarishy" }
 ]
 dependencies = []
 
+[project.scripts]
+sca-unit = "sca_unit.cli:main"
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
-
-[project.scripts]
-sca-unit = "sca_unit.cli:main"
