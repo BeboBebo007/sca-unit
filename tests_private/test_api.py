@@ -3,6 +3,7 @@ import json
 import pytest
 
 from private_server.api import (
+    parse_content_length,
     is_json_content_type,
     api_keys_match,
     RequestValidationError,
@@ -109,3 +110,16 @@ def test_json_content_type_rejects_impostors():
     assert not is_json_content_type("text/application/json")
     assert not is_json_content_type("application/jsonevil")
     assert not is_json_content_type("")
+
+
+def test_parse_content_length_accepts_digits():
+    assert parse_content_length("1234") == 1234
+
+
+def test_parse_content_length_rejects_ambiguous_values():
+    for value in ("", "+10", " 10", "10 ", "1.0", "abc"):
+        with pytest.raises(
+            RequestValidationError,
+            match="Invalid Content-Length",
+        ):
+            parse_content_length(value)

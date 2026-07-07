@@ -32,6 +32,13 @@ def is_json_content_type(content_type: str) -> bool:
     return media_type == "application/json"
 
 
+def parse_content_length(value: str) -> int:
+    if not value or not value.isascii() or not value.isdigit():
+        raise RequestValidationError("Invalid Content-Length")
+
+    return int(value)
+
+
 def process_assessment_request(
     payload: Any,
 ) -> dict[str, Any]:
@@ -183,13 +190,13 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             return
 
         try:
-            content_length = int(
+            content_length = parse_content_length(
                 self.headers.get(
                     "Content-Length",
-                    "0",
+                    "",
                 )
             )
-        except ValueError:
+        except RequestValidationError:
             self._send_json(
                 400,
                 {"error": "Invalid Content-Length"},
