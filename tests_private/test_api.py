@@ -3,6 +3,7 @@ import json
 import pytest
 
 from private_server.api import (
+    is_json_content_type,
     api_keys_match,
     RequestValidationError,
     process_assessment_request,
@@ -95,3 +96,16 @@ def test_api_keys_match_rejects_invalid_or_empty_keys():
         "test-secret-key",
         "",
     )
+
+
+def test_json_content_type_accepts_valid_values():
+    assert is_json_content_type("application/json")
+    assert is_json_content_type(
+        "Application/JSON; charset=utf-8"
+    )
+
+
+def test_json_content_type_rejects_impostors():
+    assert not is_json_content_type("text/application/json")
+    assert not is_json_content_type("application/jsonevil")
+    assert not is_json_content_type("")

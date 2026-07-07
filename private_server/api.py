@@ -27,6 +27,11 @@ def api_keys_match(
     )
 
 
+def is_json_content_type(content_type: str) -> bool:
+    media_type = content_type.split(";", 1)[0].strip().lower()
+    return media_type == "application/json"
+
+
 def process_assessment_request(
     payload: Any,
 ) -> dict[str, Any]:
@@ -166,7 +171,7 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             "",
         )
 
-        if "application/json" not in content_type:
+        if not is_json_content_type(content_type):
             self._send_json(
                 415,
                 {
