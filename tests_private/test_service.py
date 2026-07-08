@@ -230,6 +230,8 @@ def test_assessment_report_includes_drift_details(tmp_path):
         "removed_nodes": ["a"],
         "added_edges": [["c", "d"]],
         "removed_edges": [["a", "b"]],
+        "severity": "medium",
+        "total_changes": 4,
         "summary": {
             "added_node_count": 1,
             "removed_node_count": 1,

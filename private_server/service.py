@@ -123,11 +123,27 @@ def build_drift_report(
         for edge in sorted(baseline.edges - current.edges)
     ]
 
+    total_changes = (
+        len(added_nodes)
+        + len(removed_nodes)
+        + len(added_edges)
+        + len(removed_edges)
+    )
+
+    if total_changes <= 1:
+        severity = "low"
+    elif total_changes <= 4:
+        severity = "medium"
+    else:
+        severity = "high"
+
     return {
         "added_nodes": added_nodes,
         "removed_nodes": removed_nodes,
         "added_edges": added_edges,
         "removed_edges": removed_edges,
+        "severity": severity,
+        "total_changes": total_changes,
         "summary": {
             "added_node_count": len(added_nodes),
             "removed_node_count": len(removed_nodes),
