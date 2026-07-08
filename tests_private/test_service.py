@@ -231,6 +231,7 @@ def test_assessment_report_includes_drift_details(tmp_path):
         "added_edges": [["c", "d"]],
         "removed_edges": [["a", "b"]],
         "severity": "medium",
+        "verdict": "review_required",
         "total_changes": 4,
         "summary": {
             "added_node_count": 1,
@@ -239,3 +240,23 @@ def test_assessment_report_includes_drift_details(tmp_path):
             "removed_edge_count": 1,
         },
     }
+
+
+def test_identical_structures_report_no_drift(tmp_path):
+    from private_server.service import assess_structure_payloads
+
+    structure = {
+        "identity": "stable",
+        "nodes": ["a", "b"],
+        "edges": [["a", "b"]],
+    }
+
+    report = assess_structure_payloads(
+        structure,
+        structure,
+        audit_log_path=tmp_path / "audit.jsonl",
+    )
+
+    assert report["drift"]["severity"] == "low"
+    assert report["drift"]["verdict"] == "no_drift"
+    assert report["drift"]["total_changes"] == 0

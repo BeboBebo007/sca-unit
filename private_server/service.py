@@ -137,12 +137,22 @@ def build_drift_report(
     else:
         severity = "high"
 
+    if total_changes == 0:
+        verdict = "no_drift"
+    elif total_changes == 1:
+        verdict = "minor_review"
+    elif total_changes <= 4:
+        verdict = "review_required"
+    else:
+        verdict = "urgent_review"
+
     return {
         "added_nodes": added_nodes,
         "removed_nodes": removed_nodes,
         "added_edges": added_edges,
         "removed_edges": removed_edges,
         "severity": severity,
+        "verdict": verdict,
         "total_changes": total_changes,
         "summary": {
             "added_node_count": len(added_nodes),
