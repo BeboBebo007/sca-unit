@@ -108,6 +108,35 @@ def load_structural_state_from_payload(
     return create_structural_state(validated_content)
 
 
+def build_drift_report(
+    baseline: StructuralState,
+    current: StructuralState,
+) -> dict[str, Any]:
+    added_nodes = sorted(current.nodes - baseline.nodes)
+    removed_nodes = sorted(baseline.nodes - current.nodes)
+    added_edges = [
+        list(edge)
+        for edge in sorted(current.edges - baseline.edges)
+    ]
+    removed_edges = [
+        list(edge)
+        for edge in sorted(baseline.edges - current.edges)
+    ]
+
+    return {
+        "added_nodes": added_nodes,
+        "removed_nodes": removed_nodes,
+        "added_edges": added_edges,
+        "removed_edges": removed_edges,
+        "summary": {
+            "added_node_count": len(added_nodes),
+            "removed_node_count": len(removed_nodes),
+            "added_edge_count": len(added_edges),
+            "removed_edge_count": len(removed_edges),
+        },
+    }
+
+
 def build_assessment_report(
     first: StructuralState,
     second: StructuralState,
@@ -130,6 +159,7 @@ def build_assessment_report(
             "version": "0.2.0",
         },
         "assessment": assessment.as_dict(),
+        "drift": build_drift_report(first, second),
     }
 
     if audit_log_path is not None:

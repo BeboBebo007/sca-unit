@@ -207,3 +207,33 @@ def test_assess_structure_payloads_returns_report(tmp_path):
     )
     assert report["assessment"]["verdict"] == "compatible"
     assert audit_log.exists()
+
+def test_assessment_report_includes_drift_details(tmp_path):
+    from private_server.service import assess_structure_payloads
+
+    report = assess_structure_payloads(
+        {
+            "identity": "baseline",
+            "nodes": ["a", "b", "c"],
+            "edges": [["a", "b"], ["b", "c"]],
+        },
+        {
+            "identity": "current",
+            "nodes": ["b", "c", "d"],
+            "edges": [["b", "c"], ["c", "d"]],
+        },
+        audit_log_path=tmp_path / "audit.jsonl",
+    )
+
+    assert report["drift"] == {
+        "added_nodes": ["d"],
+        "removed_nodes": ["a"],
+        "added_edges": [["c", "d"]],
+        "removed_edges": [["a", "b"]],
+        "summary": {
+            "added_node_count": 1,
+            "removed_node_count": 1,
+            "added_edge_count": 1,
+            "removed_edge_count": 1,
+        },
+    }
