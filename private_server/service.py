@@ -108,6 +108,45 @@ def load_structural_state_from_payload(
     return create_structural_state(validated_content)
 
 
+
+def adapt_json_to_structure(
+    content: Any,
+    identity: str = "json-document",
+) -> dict[str, Any]:
+    if not isinstance(identity, str) or not identity.strip():
+        raise InputValidationError(
+            "The identity field must be a non-empty string"
+        )
+
+    nodes: set[str] = {"$"}
+    edges: set[tuple[str, str]] = set()
+
+    def walk(value: Any, parent_path: str) -> None:
+        if isinstance(value, dict):
+            for key in sorted(value, key=str):
+                child_path = f"{parent_path}.{key}"
+                nodes.add(child_path)
+                edges.add((parent_path, child_path))
+                walk(value[key], child_path)
+        elif isinstance(value, list):
+            for index, item in enumerate(value):
+                child_path = f"{parent_path}[{index}]"
+                nodes.add(child_path)
+                edges.add((parent_path, child_path))
+                walk(item, child_path)
+
+    walk(content, "$")
+
+    return {
+        "identity": identity.strip(),
+        "nodes": sorted(nodes),
+        "edges": [
+            list(edge)
+            for edge in sorted(edges)
+        ],
+    }
+
+
 def build_drift_report(
     baseline: StructuralState,
     current: StructuralState,

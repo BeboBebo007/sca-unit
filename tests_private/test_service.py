@@ -312,3 +312,43 @@ def test_drift_report_urgent_review(tmp_path):
         "Extensive structural drift detected; urgent review required."
     )
     assert report["drift"]["total_changes"] == 14
+
+def test_adapt_json_to_structure_extracts_paths_and_edges():
+    from private_server.service import adapt_json_to_structure
+
+    result = adapt_json_to_structure(
+        {
+            "user": {
+                "name": "Ada",
+                "roles": ["admin", "editor"],
+            },
+            "active": True,
+        },
+        identity="profile",
+    )
+
+    assert result["identity"] == "profile"
+    assert result["nodes"] == [
+        "$",
+        "$.active",
+        "$.user",
+        "$.user.name",
+        "$.user.roles",
+        "$.user.roles[0]",
+        "$.user.roles[1]",
+    ]
+    assert result["edges"] == [
+        ["$", "$.active"],
+        ["$", "$.user"],
+        ["$.user", "$.user.name"],
+        ["$.user", "$.user.roles"],
+        ["$.user.roles", "$.user.roles[0]"],
+        ["$.user.roles", "$.user.roles[1]"],
+    ]
+
+
+def test_adapt_json_to_structure_rejects_empty_identity():
+    from private_server.service import adapt_json_to_structure
+
+    with pytest.raises(InputValidationError, match="non-empty string"):
+        adapt_json_to_structure({"a": 1}, identity="   ")
