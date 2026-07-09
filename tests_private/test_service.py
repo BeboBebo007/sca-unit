@@ -262,3 +262,53 @@ def test_identical_structures_report_no_drift(tmp_path):
     assert report["drift"]["verdict"] == "no_drift"
     assert report["drift"]["human_summary"] == "No structural drift detected."
     assert report["drift"]["total_changes"] == 0
+
+
+def test_drift_report_minor_review(tmp_path):
+    from private_server.service import assess_structure_payloads
+
+    report = assess_structure_payloads(
+        {
+            "identity": "baseline",
+            "nodes": ["a", "b"],
+            "edges": [["a", "b"]],
+        },
+        {
+            "identity": "current",
+            "nodes": ["a", "b", "c"],
+            "edges": [["a", "b"]],
+        },
+        audit_log_path=tmp_path / "audit.jsonl",
+    )
+
+    assert report["drift"]["severity"] == "low"
+    assert report["drift"]["verdict"] == "minor_review"
+    assert report["drift"]["human_summary"] == (
+        "One structural change detected; minor review recommended."
+    )
+    assert report["drift"]["total_changes"] == 1
+
+
+def test_drift_report_urgent_review(tmp_path):
+    from private_server.service import assess_structure_payloads
+
+    report = assess_structure_payloads(
+        {
+            "identity": "baseline",
+            "nodes": ["a", "b", "c", "d"],
+            "edges": [["a", "b"], ["b", "c"], ["c", "d"]],
+        },
+        {
+            "identity": "current",
+            "nodes": ["w", "x", "y", "z"],
+            "edges": [["w", "x"], ["x", "y"], ["y", "z"]],
+        },
+        audit_log_path=tmp_path / "audit.jsonl",
+    )
+
+    assert report["drift"]["severity"] == "high"
+    assert report["drift"]["verdict"] == "urgent_review"
+    assert report["drift"]["human_summary"] == (
+        "Extensive structural drift detected; urgent review required."
+    )
+    assert report["drift"]["total_changes"] == 14
