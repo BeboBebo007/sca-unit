@@ -278,3 +278,25 @@ def assess_structure_payloads(
         second,
         audit_log_path=audit_log_path,
     )
+
+def assess_json_payloads(
+    first_document: Any,
+    second_document: Any,
+    first_identity: str = "baseline-json",
+    second_identity: str = "current-json",
+    audit_log_path: str | Path | None = None,
+) -> dict[str, Any]:
+    first_structure = adapt_json_to_structure(
+        first_document,
+        identity=first_identity,
+    )
+    second_structure = adapt_json_to_structure(
+        second_document,
+        identity=second_identity,
+    )
+
+    return assess_structure_payloads(
+        first_structure,
+        second_structure,
+        audit_log_path=audit_log_path,
+    )

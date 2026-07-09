@@ -352,3 +352,37 @@ def test_adapt_json_to_structure_rejects_empty_identity():
 
     with pytest.raises(InputValidationError, match="non-empty string"):
         adapt_json_to_structure({"a": 1}, identity="   ")
+
+
+def test_assess_json_payloads_reports_structural_change(tmp_path):
+    from private_server.service import assess_json_payloads
+
+    report = assess_json_payloads(
+        {
+            "user": {
+                "name": "Ada",
+            }
+        },
+        {
+            "user": {
+                "name": "Ada",
+                "roles": ["admin"],
+            }
+        },
+        first_identity="profile-v1",
+        second_identity="profile-v2",
+        audit_log_path=tmp_path / "audit.jsonl",
+    )
+
+    assert report["assessment"]["first_identity"] == "profile-v1"
+    assert report["assessment"]["second_identity"] == "profile-v2"
+    assert report["drift"]["added_nodes"] == [
+        "$.user.roles",
+        "$.user.roles[0]",
+    ]
+    assert report["drift"]["added_edges"] == [
+        ["$.user", "$.user.roles"],
+        ["$.user.roles", "$.user.roles[0]"],
+    ]
+    assert report["drift"]["total_changes"] == 4
+    assert report["drift"]["verdict"] == "review_required"
