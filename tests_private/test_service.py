@@ -232,6 +232,7 @@ def test_assessment_report_includes_drift_details(tmp_path):
         "removed_edges": [["a", "b"]],
         "severity": "medium",
         "verdict": "review_required",
+        "human_summary": "Multiple structural changes detected; review required.",
         "total_changes": 4,
         "summary": {
             "added_node_count": 1,
@@ -259,4 +260,5 @@ def test_identical_structures_report_no_drift(tmp_path):
 
     assert report["drift"]["severity"] == "low"
     assert report["drift"]["verdict"] == "no_drift"
+    assert report["drift"]["human_summary"] == "No structural drift detected."
     assert report["drift"]["total_changes"] == 0

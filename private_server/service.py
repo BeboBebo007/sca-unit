@@ -146,6 +146,15 @@ def build_drift_report(
     else:
         verdict = "urgent_review"
 
+
+    human_messages = {
+        "no_drift": "No structural drift detected.",
+        "minor_review": "One structural change detected; minor review recommended.",
+        "review_required": "Multiple structural changes detected; review required.",
+        "urgent_review": "Extensive structural drift detected; urgent review required.",
+    }
+    human_summary = human_messages[verdict]
+
     return {
         "added_nodes": added_nodes,
         "removed_nodes": removed_nodes,
@@ -153,6 +162,7 @@ def build_drift_report(
         "removed_edges": removed_edges,
         "severity": severity,
         "verdict": verdict,
+        "human_summary": human_summary,
         "total_changes": total_changes,
         "summary": {
             "added_node_count": len(added_nodes),
