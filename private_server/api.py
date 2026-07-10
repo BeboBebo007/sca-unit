@@ -1,6 +1,7 @@
 import hmac
 import json
 import os
+from pathlib import Path
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 
@@ -167,7 +168,38 @@ class SCARequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(encoded)
 
+
+    def _send_html(
+        self,
+        status_code: int,
+        html: str,
+    ) -> None:
+        encoded = html.encode("utf-8")
+        self.send_response(status_code)
+        self.send_header(
+            "Content-Type",
+            "text/html; charset=utf-8",
+        )
+        self.send_header(
+            "Content-Length",
+            str(len(encoded)),
+        )
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Connection", "close")
+        self.close_connection = True
+        self.end_headers()
+        self.wfile.write(encoded)
+
     def do_GET(self) -> None:
+        if self.path == "/":
+            index_path = Path(__file__).parent / "static" / "index.html"
+            self._send_html(
+                200,
+                index_path.read_text(encoding="utf-8-sig"),
+            )
+            return
+
         if self.path == "/health":
             self._send_json(
                 200,
