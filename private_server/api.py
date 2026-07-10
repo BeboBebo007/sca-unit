@@ -6,6 +6,7 @@ from typing import Any
 
 from private_server.service import (
     InputValidationError,
+    assess_json_payloads,
     assess_structure_payloads,
 )
 
@@ -90,6 +91,53 @@ def process_assessment_request(
     )
 
 
+
+def process_json_assessment_request(
+    payload: Any,
+) -> dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise RequestValidationError(
+            "The request body must be a JSON object"
+        )
+
+    required_fields = {
+        "first_document",
+        "second_document",
+    }
+    missing_fields = sorted(
+        required_fields - payload.keys()
+    )
+
+    if missing_fields:
+        raise RequestValidationError(
+            f"Missing required fields: {', '.join(missing_fields)}"
+        )
+
+    audit_log = payload.get(
+        "audit_log",
+        "evidence/private_server_audit.jsonl",
+    )
+
+    if not isinstance(audit_log, str) or not audit_log.strip():
+        raise RequestValidationError(
+            "audit_log must be a non-empty string"
+        )
+
+    return assess_json_payloads(
+        first_document=payload["first_document"],
+        second_document=payload["second_document"],
+        first_identity=payload.get(
+            "first_identity",
+            "baseline-json",
+        ),
+        second_identity=payload.get(
+            "second_identity",
+            "current-json",
+        ),
+        audit_log_path=audit_log,
+    )
+
+
 class SCARequestHandler(BaseHTTPRequestHandler):
     server_version = "SCAUnitLocalService/0.2"
 
@@ -139,7 +187,7 @@ class SCARequestHandler(BaseHTTPRequestHandler):
         )
 
     def do_POST(self) -> None:
-        if self.path != "/assess":
+        if self.path not in {"/assess", "/assess-json"}:
             self._send_json(
                 404,
                 {"error": "Endpoint not found"},
@@ -223,9 +271,14 @@ class SCARequestHandler(BaseHTTPRequestHandler):
             payload = json.loads(
                 raw_body.decode("utf-8")
             )
-            report = process_assessment_request(
-                payload
-            )
+            if self.path == "/assess-json":
+                report = process_json_assessment_request(
+                    payload
+                )
+            else:
+                report = process_assessment_request(
+                    payload
+                )
         except UnicodeDecodeError:
             self._send_json(
                 400,

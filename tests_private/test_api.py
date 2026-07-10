@@ -8,6 +8,7 @@ from private_server.api import (
     api_keys_match,
     RequestValidationError,
     process_assessment_request,
+    process_json_assessment_request,
 )
 
 
@@ -123,3 +124,33 @@ def test_parse_content_length_rejects_ambiguous_values():
             match="Invalid Content-Length",
         ):
             parse_content_length(value)
+
+
+def test_process_json_assessment_request(tmp_path):
+    report = process_json_assessment_request(
+        {
+            "first_document": {
+                "user": {
+                    "name": "Ada",
+                }
+            },
+            "second_document": {
+                "user": {
+                    "name": "Ada",
+                    "roles": ["admin"],
+                }
+            },
+            "first_identity": "profile-v1",
+            "second_identity": "profile-v2",
+            "audit_log": str(tmp_path / "audit.jsonl"),
+        }
+    )
+
+    assert report["assessment"]["first_identity"] == "profile-v1"
+    assert report["assessment"]["second_identity"] == "profile-v2"
+    assert report["drift"]["added_nodes"] == [
+        "$.user.roles",
+        "$.user.roles[0]",
+    ]
+    assert report["drift"]["total_changes"] == 4
+    assert report["drift"]["verdict"] == "review_required"
