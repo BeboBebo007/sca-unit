@@ -1,4 +1,4 @@
-import threading
+﻿import threading
 from http.client import HTTPConnection
 from http.server import ThreadingHTTPServer
 
@@ -71,6 +71,7 @@ def test_root_serves_web_interface():
         assert response.getheader("X-Content-Type-Options") == "nosniff"
         assert "<h1>SCA-Unit</h1>" in body
         assert 'id="export-json-button"' in body
+        assert 'id="export-html-button"' in body
     finally:
         connection.close()
         server.shutdown()

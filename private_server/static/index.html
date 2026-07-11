@@ -111,6 +111,7 @@
 
       <button id="compare-button" type="button">Compare structures</button>
       <button id="export-json-button" type="button" disabled>Download JSON report</button>
+      <button id="export-html-button" type="button" disabled>Download HTML report</button>
 
       <pre id="result">Ready for assessment.</pre>
     </div>
@@ -120,6 +121,7 @@
     const button = document.getElementById("compare-button");
     const result = document.getElementById("result");
     const exportButton = document.getElementById("export-json-button");
+    const exportHtmlButton = document.getElementById("export-html-button");
     let latestReport = null;
 
     button.addEventListener("click", async () => {
@@ -155,21 +157,35 @@
 
         latestReport = data;
         exportButton.disabled = false;
+        exportHtmlButton.disabled = false;
         result.textContent = JSON.stringify(data, null, 2);
       } catch (error) {
         result.textContent = "Error: " + error.message;
       }
     });
-    exportButton.addEventListener("click", () => {
-      if (!latestReport) return;
-      const blob = new Blob([JSON.stringify(latestReport, null, 2)], {
-        type: "application/json"
-      });
+    function downloadBlob(content, type, filename) {
+      const blob = new Blob([content], { type });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = "sca-unit-report.json";
+      link.download = filename;
       link.click();
       URL.revokeObjectURL(link.href);
+    }
+
+    function buildHtmlReport(report) {
+      return "<!doctype html><html><head><meta charset=\"utf-8\"><title>SCA-Unit Report</title></head><body><h1>SCA-Unit Report</h1><pre>" +
+        JSON.stringify(report, null, 2).replace(/[&<>]/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[character])) +
+        "</pre></body></html>";
+    }
+
+    exportButton.addEventListener("click", () => {
+      if (!latestReport) return;
+      downloadBlob(JSON.stringify(latestReport, null, 2), "application/json", "sca-unit-report.json");
+    });
+
+    exportHtmlButton.addEventListener("click", () => {
+      if (!latestReport) return;
+      downloadBlob(buildHtmlReport(latestReport), "text/html", "sca-unit-report.html");
     });
   </script>
 </body>
