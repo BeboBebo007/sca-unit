@@ -46,3 +46,15 @@ Use these files for a quick browser demo:
 Paste baseline_user.json into the first JSON box and changed_user.json into the second JSON box, then click Compare structures.
 
 
+
+
+## First-time setup after extraction
+
+Before running the demo, create a local environment file named `.env.local` in the project root:
+
+```text
+SCA_UNIT_API_KEY=sca-unit-demo-key-2026-secure-local-001
+```
+
+This file is intentionally excluded from the public ZIP package.
+
