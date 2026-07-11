@@ -41,3 +41,13 @@ user.roles
 ```
 
 You can then download the report as JSON or HTML.
+
+## First-time setup
+
+Create `.env.local` in the extracted project folder before running the demo:
+
+```text
+SCA_UNIT_API_KEY=sca-unit-demo-key-2026-secure-local-001
+```
+
+Then run `.\run_demo.ps1`.
