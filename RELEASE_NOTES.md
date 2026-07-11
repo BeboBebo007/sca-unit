@@ -1,5 +1,9 @@
 ﻿# SCA-Unit Release Snapshot
 
+## Version
+
+0.3.0-demo
+
 ## Snapshot
 
 This release snapshot contains a local browser-based SCA-Unit demo.
@@ -32,3 +36,4 @@ Expected result:
 - run_demo.ps1
 - demo_examples/baseline_user.json
 - demo_examples/changed_user.json
+
