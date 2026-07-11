@@ -1,15 +1,16 @@
-﻿# SCA-Unit Release Snapshot
+﻿# SCA-Unit Final Public Release Snapshot
 
 ## Version
 
-0.3.0-demo
+0.3.0-demo-clean-tested-docs-install-demo-verified
 
 ## Snapshot
 
-This release snapshot contains a local browser-based SCA-Unit demo.
+This final public release snapshot contains a clean browser-based SCA-Unit demo package.
 
-## Included capabilities
+## Verified capabilities
 
+- Clean public ZIP package
 - Local web interface
 - JSON-to-structure assessment
 - Structural comparison report
@@ -18,22 +19,18 @@ This release snapshot contains a local browser-based SCA-Unit demo.
 - Local launcher: run_demo.ps1
 - Demo examples
 - Demo guide
+- Public setup instructions
+- Independent public install verification
+- Independent demo run verification
 
 ## Validation
 
-The snapshot is validated by the automated test suite.
+The package is validated by the automated test suite.
 
 Expected result:
 
-```text
 46 passed
-```
 
-## Main demo files
+## Final archive
 
-- README.md
-- DEMO_GUIDE.md
-- run_demo.ps1
-- demo_examples/baseline_user.json
-- demo_examples/changed_user.json
-
+SCA-Unit-v0.3.0-demo-clean-tested-docs-install-demo-verified.zip
