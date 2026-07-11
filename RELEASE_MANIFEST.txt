@@ -1,9 +1,13 @@
-﻿SCA-Unit Release Snapshot Manifest
+﻿SCA-Unit Final Public Release Snapshot Manifest
+
+Version:
+- 0.3.0-demo-clean-tested-docs-install-demo-verified
 
 Core files:
 - README.md
 - DEMO_GUIDE.md
 - RELEASE_NOTES.md
+- RELEASE_MANIFEST.txt
 - run_demo.ps1
 - pyproject.toml
 
@@ -16,14 +20,15 @@ Service:
 - private_server/start_local.py
 - private_server/static/index.html
 
-Validation:
-- tests_private/test_demo_examples.py
-- tests_private/test_local_demo_package.py
-- evidence/milestone_40_demo_readiness.txt
+Validation included in repository evidence:
+- milestone 45: public demo instructions
+- milestone 46: independent public install test
+- milestone 47: independent demo run test
 
 Clean public export excludes:
 - evidence/
 - product/
 - reusable_service/
 - tests_template/
-- local environment files
+- .env.local
+- .gitattributes
