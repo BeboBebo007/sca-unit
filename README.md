@@ -1,4 +1,4 @@
-# SCA-Unit
+﻿# SCA-Unit
 
 **SCA-Unit** is a structural assessment prototype designed to compare
 two system representations as structures rather than as isolated values.
@@ -22,3 +22,15 @@ decision mechanisms.
 
 ```text
 0.2.0
+` 
+
+## Local Demo Package
+
+Run the local browser demo with:
+
+```powershell
+.\run_demo.ps1
+```
+
+The demo opens http://127.0.0.1:8765 and uses SCA_UNIT_API_KEY from .env.local.
+
