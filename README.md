@@ -21,7 +21,7 @@ decision mechanisms.
 ## Current Version
 
 ```text
-0.2.0
+0.3.0
 ` 
 
 ## Local Demo Package
@@ -44,4 +44,5 @@ Use these files for a quick browser demo:
 - demo_examples/changed_user.json
 
 Paste baseline_user.json into the first JSON box and changed_user.json into the second JSON box, then click Compare structures.
+
 
