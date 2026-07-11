@@ -34,3 +34,14 @@ Run the local browser demo with:
 
 The demo opens http://127.0.0.1:8765 and uses SCA_UNIT_API_KEY from .env.local.
 
+
+
+## Demo Examples
+
+Use these files for a quick browser demo:
+
+- demo_examples/baseline_user.json
+- demo_examples/changed_user.json
+
+Paste baseline_user.json into the first JSON box and changed_user.json into the second JSON box, then click Compare structures.
+
