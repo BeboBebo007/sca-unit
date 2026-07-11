@@ -70,6 +70,7 @@ def test_root_serves_web_interface():
         assert response.getheader("Content-Type") == "text/html; charset=utf-8"
         assert response.getheader("X-Content-Type-Options") == "nosniff"
         assert "<h1>SCA-Unit</h1>" in body
+        assert 'id="export-json-button"' in body
     finally:
         connection.close()
         server.shutdown()

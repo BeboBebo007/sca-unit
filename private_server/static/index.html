@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -110,6 +110,7 @@
       </div>
 
       <button id="compare-button" type="button">Compare structures</button>
+      <button id="export-json-button" type="button" disabled>Download JSON report</button>
 
       <pre id="result">Ready for assessment.</pre>
     </div>
@@ -118,6 +119,8 @@
   <script>
     const button = document.getElementById("compare-button");
     const result = document.getElementById("result");
+    const exportButton = document.getElementById("export-json-button");
+    let latestReport = null;
 
     button.addEventListener("click", async () => {
       result.textContent = "Assessing...";
@@ -150,10 +153,23 @@
           throw new Error(data.error || "Assessment failed");
         }
 
+        latestReport = data;
+        exportButton.disabled = false;
         result.textContent = JSON.stringify(data, null, 2);
       } catch (error) {
         result.textContent = "Error: " + error.message;
       }
+    });
+    exportButton.addEventListener("click", () => {
+      if (!latestReport) return;
+      const blob = new Blob([JSON.stringify(latestReport, null, 2)], {
+        type: "application/json"
+      });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "sca-unit-report.json";
+      link.click();
+      URL.revokeObjectURL(link.href);
     });
   </script>
 </body>
