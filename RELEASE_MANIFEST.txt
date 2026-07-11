@@ -1,0 +1,22 @@
+﻿SCA-Unit Release Snapshot Manifest
+
+Core files:
+- README.md
+- DEMO_GUIDE.md
+- RELEASE_NOTES.md
+- run_demo.ps1
+- pyproject.toml
+
+Demo examples:
+- demo_examples/baseline_user.json
+- demo_examples/changed_user.json
+
+Service:
+- private_server/api.py
+- private_server/start_local.py
+- private_server/static/index.html
+
+Validation:
+- tests_private/test_demo_examples.py
+- tests_private/test_local_demo_package.py
+- evidence/milestone_40_demo_readiness.txt
