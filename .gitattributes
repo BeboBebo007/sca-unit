@@ -1,0 +1,9 @@
+﻿/evidence/ export-ignore
+/product/ export-ignore
+/reusable_service/ export-ignore
+/tests_template/ export-ignore
+/dist/ export-ignore
+/.pytest_cache/ export-ignore
+/.venv/ export-ignore
+/.venv-test/ export-ignore
+/.env.local export-ignore

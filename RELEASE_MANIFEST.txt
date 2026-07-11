@@ -20,3 +20,10 @@ Validation:
 - tests_private/test_demo_examples.py
 - tests_private/test_local_demo_package.py
 - evidence/milestone_40_demo_readiness.txt
+
+Clean public export excludes:
+- evidence/
+- product/
+- reusable_service/
+- tests_template/
+- local environment files
