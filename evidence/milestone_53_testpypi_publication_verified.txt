@@ -1,0 +1,9 @@
+﻿Milestone 53 - TestPyPI Publication Verified
+Status: passed
+TestPyPI URL: https://test.pypi.org/project/sca-unit/0.3.0/
+Upload: passed
+Install from TestPyPI: passed
+Import test: passed
+CLI help test: passed
+Package: sca-unit==0.3.0
+Conclusion: SCA-Unit v0.3.0 is verified on TestPyPI
