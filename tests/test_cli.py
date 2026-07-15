@@ -86,3 +86,17 @@ def test_rejects_invalid_edge_format(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="two-item list"):
         load_structural_state(invalid_path)
+def test_load_structural_state_accepts_utf8_bom(tmp_path: Path) -> None:
+    bom_path = tmp_path / 'bom.json'
+    content = json.dumps({
+        'identity': 'bom-case',
+        'nodes': ['A', 'B'],
+        'edges': [['A', 'B']],
+    })
+    bom_path.write_text(content, encoding='utf-8-sig')
+
+    state = load_structural_state(bom_path)
+
+    assert state.identity == 'bom-case'
+    assert state.nodes == frozenset({'A', 'B'})
+    assert state.edges == frozenset({('A', 'B')})

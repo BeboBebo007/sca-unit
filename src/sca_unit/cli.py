@@ -11,9 +11,9 @@ from .models import StructuralState
 
 
 def load_json_object(path: Path) -> dict[str, Any]:
-    """Read a JSON object from a UTF-8 file."""
+    """Read a JSON object from a UTF-8 or UTF-8-BOM file."""
     try:
-        text = path.read_text(encoding="utf-8")
+        text = path.read_text(encoding="utf-8-sig")
     except OSError as exc:
         raise ValueError(f"Unable to read '{path}': {exc}") from exc
 
