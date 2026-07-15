@@ -1,0 +1,7 @@
+﻿Milestone 54 - Real PyPI Publication
+Status: published
+PyPI URL: https://pypi.org/project/sca-unit/0.3.0/
+Upload: passed
+Wheel upload: passed
+Source upload: passed
+Next step: verify clean installation from real PyPI
