@@ -1,0 +1,9 @@
+﻿Milestone 55 - External Laptop Usage Test
+Status: passed
+Install source: real PyPI
+Install command: pip install sca-unit==0.3.0
+Python API test: passed
+CLI test: passed
+Report output: passed
+Verdict: compatible
+Discovered improvement: handle UTF-8 BOM JSON files and align reported engine version
