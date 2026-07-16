@@ -10,6 +10,11 @@ from . import __version__
 from .assessment import assess_structures
 from .models import StructuralState
 
+INPUT_FORMAT_HINT = (
+    'Expected input JSON: {"identity": "name", "nodes": ["A", "B"], '
+    '"edges": [["A", "B"]]}'
+)
+
 
 def load_json_object(path: Path) -> dict[str, Any]:
     """Read a JSON object from a UTF-8 or UTF-8-BOM file."""
@@ -207,6 +212,7 @@ def main() -> int:
 
     except ValueError as exc:
         print(f"SCA-Unit input error: {exc}", file=sys.stderr)
+        print(f"Hint: {INPUT_FORMAT_HINT}", file=sys.stderr)
         return 2
 
 
