@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+import sca_unit
+
 import pytest
 
 from sca_unit.cli import (
@@ -51,6 +53,7 @@ def test_build_report_for_identical_structures(
     report = build_report(first_path, second_path)
 
     assert report["schema_version"] == "1.0"
+    assert report["engine"]["version"] == sca_unit.__version__
     assert report["assessment"]["verdict"] == "identical"
     assert report["assessment"]["compatibility"] == pytest.approx(1.0)
     assert report["assessment"]["conflict"] == pytest.approx(0.0)

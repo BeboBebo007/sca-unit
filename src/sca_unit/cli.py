@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from . import __version__
 from .assessment import assess_structures
 from .models import StructuralState
 
@@ -96,7 +97,7 @@ def build_report(
         "schema_version": "1.0",
         "engine": {
             "name": "SCA-Unit Public Structural Assessment",
-            "version": "0.2.0",
+            "version": __version__,
             "scope": "non-proprietary prototype",
         },
         "inputs": {
