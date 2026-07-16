@@ -7,6 +7,7 @@ import pytest
 
 from sca_unit.cli import (
     build_report,
+    create_parser,
     load_structural_state,
     write_report,
 )
@@ -105,3 +106,13 @@ def test_load_structural_state_accepts_utf8_bom(tmp_path: Path) -> None:
     assert state.nodes == frozenset({'A', 'B'})
     assert state.edges == frozenset({('A', 'B')})
 
+
+
+def test_cli_version_option_outputs_package_version(capsys) -> None:
+    parser = create_parser()
+
+    with pytest.raises(SystemExit) as exc_info:
+        parser.parse_args(["--version"])
+
+    assert exc_info.value.code == 0
+    assert f"sca-unit {sca_unit.__version__}" in capsys.readouterr().out

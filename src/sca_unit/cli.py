@@ -162,6 +162,12 @@ def create_parser() -> argparse.ArgumentParser:
         help="Optional path for the generated JSON report.",
     )
 
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"sca-unit {__version__}",
+    )
+
     return parser
 
 
