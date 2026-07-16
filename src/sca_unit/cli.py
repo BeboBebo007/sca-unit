@@ -163,6 +163,12 @@ def create_parser() -> argparse.ArgumentParser:
     )
 
     parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Validate inputs and print a short assessment summary without writing a report.",
+    )
+
+    parser.add_argument(
         "--version",
         action="version",
         version=f"sca-unit {__version__}",
@@ -177,6 +183,12 @@ def main() -> int:
 
     try:
         report = build_report(args.first, args.second)
+
+        if args.check:
+            print("SCA-Unit check passed.")
+            print(f"Verdict: {report['assessment']['verdict']}")
+            print(f"Compatibility: {report['assessment']['compatibility']}")
+            return 0
 
         if args.output is not None:
             write_report(report, args.output)

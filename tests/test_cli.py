@@ -9,6 +9,7 @@ from sca_unit.cli import (
     build_report,
     create_parser,
     load_structural_state,
+    main,
     write_report,
 )
 
@@ -116,3 +117,20 @@ def test_cli_version_option_outputs_package_version(capsys) -> None:
 
     assert exc_info.value.code == 0
     assert f"sca-unit {sca_unit.__version__}" in capsys.readouterr().out
+
+
+def test_cli_check_mode_prints_short_summary(tmp_path: Path, capsys, monkeypatch) -> None:
+    first_path = tmp_path / "first.json"
+    second_path = tmp_path / "second.json"
+
+    write_structure(first_path, "first", ["A", "B"], [["A", "B"]])
+    write_structure(second_path, "second", ["A", "B"], [["A", "B"]])
+
+    monkeypatch.setattr("sys.argv", ["sca-unit", str(first_path), str(second_path), "--check"])
+
+    assert main() == 0
+
+    output = capsys.readouterr().out
+    assert "SCA-Unit check passed." in output
+    assert "Verdict: identical" in output
+    assert "Compatibility: 1.0" in output
