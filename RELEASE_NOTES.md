@@ -1,36 +1,21 @@
-﻿# SCA-Unit Final Public Release Snapshot
+# SCA-Unit Release Notes
 
-## Version
+## v0.4.0 - Public usability improvement release
 
-0.3.0-demo-clean-tested-docs-install-demo-verified
+### Added
+- Added sca-unit --version command.
+- Added sca-unit first.json second.json --check for short validation summaries.
+- Added clearer CLI input error guidance with an expected JSON format hint.
+- Added v0.4.0 release checklist.
 
-## Snapshot
+### Verified
+- Full test suite passes: 50 passed.
+- CLI report version is aligned with package __version__.
+- UTF-8-BOM JSON input is supported.
 
-This final public release snapshot contains a clean browser-based SCA-Unit demo package.
+### Release rule
+Do not upload to PyPI until version numbers, README, release notes, clean install, and CLI checks all pass.
 
-## Verified capabilities
+## v0.3.0 - First public PyPI release
 
-- Clean public ZIP package
-- Local web interface
-- JSON-to-structure assessment
-- Structural comparison report
-- JSON report export
-- HTML report export
-- Local launcher: run_demo.ps1
-- Demo examples
-- Demo guide
-- Public setup instructions
-- Independent public install verification
-- Independent demo run verification
-
-## Validation
-
-The package is validated by the automated test suite.
-
-Expected result:
-
-46 passed
-
-## Final archive
-
-SCA-Unit-v0.3.0-demo-clean-tested-docs-install-demo-verified.zip
+Initial public SCA-Unit release on PyPI with structural JSON comparison, deterministic assessment reports, and public demo materials.
