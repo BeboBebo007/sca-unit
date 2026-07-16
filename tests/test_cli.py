@@ -134,3 +134,19 @@ def test_cli_check_mode_prints_short_summary(tmp_path: Path, capsys, monkeypatch
     assert "SCA-Unit check passed." in output
     assert "Verdict: identical" in output
     assert "Compatibility: 1.0" in output
+
+
+def test_cli_input_error_prints_format_hint(tmp_path: Path, capsys, monkeypatch) -> None:
+    first_path = tmp_path / "bad.json"
+    second_path = tmp_path / "good.json"
+
+    first_path.write_text("not json", encoding="utf-8")
+    write_structure(second_path, "second", ["A", "B"], [["A", "B"]])
+
+    monkeypatch.setattr("sys.argv", ["sca-unit", str(first_path), str(second_path)])
+
+    assert main() == 2
+
+    error = capsys.readouterr().err
+    assert "SCA-Unit input error:" in error
+    assert "Hint: Expected input JSON:" in error
