@@ -81,3 +81,17 @@ SCA-Unit can also support a paid structural report workflow:
 3. A human-readable structural report is generated from the assessment.
 
 This public layer does not expose AMNE internals or protected structural architecture.
+
+## Public examples
+
+The repository includes a small examples directory for quick testing:
+
+- examples/example_system_v1.json
+- examples/example_system_v2.json
+- examples/example_paid_structural_report.md
+
+Run the example assessment:
+
+sca-unit examples/example_system_v1.json examples/example_system_v2.json --output examples/example_raw_report.json
+
+Then inspect the generated raw report or use it as input for the paid report workflow.
