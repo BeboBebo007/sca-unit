@@ -61,3 +61,23 @@ Run a short validation check without printing the full JSON report:
 sca-unit first.json second.json --check
 
 When input JSON is invalid, SCA-Unit prints an input error plus a short expected-format hint.
+
+## Public Product Positioning
+
+SCA-Unit is a public Python package for structural compatibility assessment between two structured software or logical states.
+
+It can be used from the command line, from Python, or as a foundation for generated structural reports.
+
+### Public use
+- Compare two JSON structural states
+- Produce a compatibility assessment
+- Use the result in review, migration, integration, or system-evolution workflows
+
+### Paid report layer
+SCA-Unit can also support a paid structural report workflow:
+
+1. Customer provides two JSON structural states.
+2. SCA-Unit generates a raw JSON assessment.
+3. A human-readable structural report is generated from the assessment.
+
+This public layer does not expose AMNE internals or protected structural architecture.
