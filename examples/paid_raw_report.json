@@ -1,0 +1,23 @@
+{
+  "assessment": {
+    "compatibility": 0.708333,
+    "conflict": 0.0,
+    "edge_similarity": 0.666667,
+    "first_identity": "customer-system-v1",
+    "node_similarity": 0.75,
+    "second_identity": "customer-system-v2",
+    "verdict": "compatible"
+  },
+  "engine": {
+    "name": "SCA-Unit Public Structural Assessment",
+    "scope": "non-proprietary prototype",
+    "version": "0.4.0"
+  },
+  "inputs": {
+    "first_file": "examples\\example_system_v1.json",
+    "first_identity": "customer-system-v1",
+    "second_file": "examples\\example_system_v2.json",
+    "second_identity": "customer-system-v2"
+  },
+  "schema_version": "1.0"
+}
