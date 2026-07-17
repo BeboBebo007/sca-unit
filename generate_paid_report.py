@@ -1,11 +1,11 @@
+import argparse
 import json
 from pathlib import Path
 
-def main():
-    raw = json.loads(Path('sample_sca_report.json').read_text(encoding='utf-8'))
+def build_report(raw):
     a = raw['assessment']
     e = raw['engine']
-    lines = [
+    return [
         '# SCA-Unit Generated Structural Report',
         '',
         '## Report type',
@@ -36,7 +36,16 @@ def main():
         '## Service boundary',
         'This report is generated from public SCA-Unit functionality and does not expose protected internal architecture.',
     ]
-    Path('GENERATED_PAID_REPORT.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate a paid SCA-Unit structural report.')
+    parser.add_argument('input_json', help='SCA-Unit JSON report input path')
+    parser.add_argument('-o','--output', default='GENERATED_PAID_REPORT.md', help='Markdown report output path')
+    args = parser.parse_args()
+    raw = json.loads(Path(args.input_json).read_text(encoding='utf-8'))
+    lines = build_report(raw)
+    Path(args.output).write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    print(f'Report written to: {args.output}')
 
 if __name__ == '__main__':
     main()
