@@ -21,7 +21,7 @@ The post-release product phase is complete.
 SCA-Unit now has a coherent public paid-report layer based on public SCA-Unit outputs.
 
 ## Business position
-The product remains self-owned, public-discovery based, and independent of cold outreach or external investors.
+The product remains self-owned, public-discovery based, and independent of cold outreach or external investors. Paid reports may start as a manual early service workflow. Payment handling is not automated yet.
 
 ## Safety boundary
 No AMNE internals or protected structural architecture exposed.
