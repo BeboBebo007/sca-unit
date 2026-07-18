@@ -121,3 +121,11 @@ Start here:
 PAID_REPORT_PUBLIC_PACKAGE_INDEX.md
 
 This public service layer uses SCA-Unit outputs only and does not expose AMNE internals or protected structural architecture.
+
+## Paid Structural Report Service
+
+SCA-Unit also supports a manual paid structural report service based on two customer-provided JSON structural state files.
+
+Read the service page: [PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md](PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md)
+
+This public service page uses only the public SCA-Unit workflow and does not expose AMNE internals or protected structural architecture.
