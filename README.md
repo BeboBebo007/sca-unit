@@ -111,3 +111,13 @@ Quick command:
     sca-unit first.json second.json
 
 This public layer does not expose AMNE internals or protected structural architecture.
+
+## Paid structural report package
+
+SCA-Unit includes a public paid-report package index for the Structural Compatibility Report service.
+
+Start here:
+
+PAID_REPORT_PUBLIC_PACKAGE_INDEX.md
+
+This public service layer uses SCA-Unit outputs only and does not expose AMNE internals or protected structural architecture.
