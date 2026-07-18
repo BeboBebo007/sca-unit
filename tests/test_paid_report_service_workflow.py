@@ -1,10 +1,5 @@
-import json
 import subprocess
 import sys
-
-
-def write_json(path, value):
-    path.write_text(json.dumps(value), encoding="utf-8")
 
 
 def run_paid_report_service(project_root, first, second, raw_output, report_output):
@@ -28,13 +23,10 @@ def run_paid_report_service(project_root, first, second, raw_output, report_outp
 def test_paid_report_service_generates_outputs_for_valid_inputs(tmp_path):
     project_root = tmp_path.cwd()
 
-    first = tmp_path / "first.json"
-    second = tmp_path / "second.json"
+    first = project_root / "sample_a.json"
+    second = project_root / "sample_b.json"
     raw_output = tmp_path / "raw_report.json"
     report_output = tmp_path / "paid_report.md"
-
-    write_json(first, {"nodes": ["a"], "edges": []})
-    write_json(second, {"nodes": ["b"], "edges": []})
 
     result = run_paid_report_service(project_root, first, second, raw_output, report_output)
 
@@ -48,11 +40,9 @@ def test_paid_report_service_stops_for_missing_input(tmp_path):
     project_root = tmp_path.cwd()
 
     missing = tmp_path / "missing.json"
-    second = tmp_path / "second.json"
+    second = project_root / "sample_b.json"
     raw_output = tmp_path / "raw_report.json"
     report_output = tmp_path / "paid_report.md"
-
-    write_json(second, {"nodes": ["b"], "edges": []})
 
     result = run_paid_report_service(project_root, missing, second, raw_output, report_output)
 
