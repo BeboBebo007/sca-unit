@@ -95,3 +95,19 @@ Run the example assessment:
 sca-unit examples/example_system_v1.json examples/example_system_v2.json --output examples/example_raw_report.json
 
 Then inspect the generated raw report or use it as input for the paid report workflow.
+
+## Public landing message
+
+SCA-Unit compares two structured JSON states and produces a deterministic structural compatibility assessment.
+
+It is intended for developers, reviewers, and technical teams who need to understand structural differences before migration, integration, review, or system evolution.
+
+Install:
+
+    pip install sca-unit==0.4.0
+
+Quick command:
+
+    sca-unit first.json second.json
+
+This public layer does not expose AMNE internals or protected structural architecture.
