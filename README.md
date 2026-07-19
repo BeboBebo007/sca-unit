@@ -129,3 +129,11 @@ SCA-Unit also supports a manual paid structural report service based on two cust
 Read the service page: [PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md](PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md)
 
 This public service page uses only the public SCA-Unit workflow and does not expose AMNE internals or protected structural architecture.
+
+## Public Launch Announcement
+
+Read the public launch announcement for the manual paid SCA-Unit Structural Report service.
+
+Launch announcement: [PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md](PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md)
+
+This public announcement uses only the public SCA-Unit workflow and does not expose AMNE internals or protected structural architecture.
