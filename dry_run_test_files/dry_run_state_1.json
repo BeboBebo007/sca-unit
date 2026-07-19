@@ -1,21 +1,23 @@
 {
-    "asset_id":  "dry-run-sample-001",
-    "metadata":  {
-                     "artificial_test_file":  true,
-                     "contains_real_customer_data":  false,
-                     "contains_credentials":  false
-                 },
-    "state_label":  "first_structural_state",
-    "structure":  {
-                      "modules":  [
-                                      "identity",
-                                      "state",
-                                      "relation"
-                                  ],
-                      "interfaces":  [
-                                         "json_input",
-                                         "structural_report"
-                                     ],
-                      "version":  "test-1"
-                  }
+    "test_metadata":  {
+                          "customer_data_present":  false,
+                          "sensitive_data_present":  false,
+                          "synthetic_file":  true
+                      },
+    "nodes":  [
+                  "identity",
+                  "state",
+                  "relation"
+              ],
+    "edges":  [
+                  [
+                      "identity",
+                      "state"
+                  ],
+                  [
+                      "state",
+                      "relation"
+                  ]
+              ],
+    "identity":  "dry-run-sample-001-state-1"
 }
