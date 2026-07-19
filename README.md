@@ -80,7 +80,7 @@ SCA-Unit can also support a paid structural report workflow:
 2. SCA-Unit generates a raw JSON assessment.
 3. A human-readable structural report is generated from the assessment.
 
-This public layer does not expose AMNE internals or protected structural architecture.
+This public layer is limited to the documented SCA-Unit workflow and does not include proprietary internal mechanisms.
 
 ## Public examples
 
@@ -110,7 +110,7 @@ Quick command:
 
     sca-unit first.json second.json
 
-This public layer does not expose AMNE internals or protected structural architecture.
+This public layer is limited to the documented SCA-Unit workflow and does not include proprietary internal mechanisms.
 
 ## Paid structural report package
 
@@ -120,7 +120,7 @@ Start here:
 
 PAID_REPORT_PUBLIC_PACKAGE_INDEX.md
 
-This public service layer uses SCA-Unit outputs only and does not expose AMNE internals or protected structural architecture.
+This public service layer uses SCA-Unit outputs only and remains limited to the documented public workflow.
 
 ## Paid Structural Report Service
 
@@ -128,7 +128,7 @@ SCA-Unit also supports a manual paid structural report service based on two cust
 
 Read the service page: [PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md](PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md)
 
-This public service page uses only the public SCA-Unit workflow and does not expose AMNE internals or protected structural architecture.
+This public service page uses only the documented public SCA-Unit workflow.
 
 ## Public Launch Announcement
 
@@ -136,7 +136,7 @@ Read the public launch announcement for the manual paid SCA-Unit Structural Repo
 
 Launch announcement: [PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md](PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md)
 
-This public announcement uses only the public SCA-Unit workflow and does not expose AMNE internals or protected structural architecture.
+This public announcement uses only the documented public SCA-Unit workflow.
 ## First Real Customer Structural Report Service
 
 SCA-Unit is ready for a controlled first real customer request for the manual Structural Report service.
