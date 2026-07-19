@@ -222,3 +222,12 @@ Preferred first revenue offer:
 - Standard Report: 29 EUR
 
 This revenue path is manual and controlled. It does not include automated checkout, subscriptions, enterprise billing, or tax handling.
+## External Documentation
+
+SCA-Unit includes an external documentation index for public readers, code assistants, and future documentation alignment.
+
+External documentation index:
+
+- [docs/external_documentation_index.md](docs/external_documentation_index.md)
+
+This index links the public structural assessment overview, README alignment records, public operation records, and first revenue path records.
