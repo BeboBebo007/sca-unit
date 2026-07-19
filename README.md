@@ -154,3 +154,10 @@ This controlled service compares exactly two JSON structural state files and tur
 Please do not submit passwords, API keys, tokens, private keys, credentials, confidential secrets, sensitive personal data, or unrelated private documents.
 
 SCA-Unit provides a structural comparison report. It is not intended to replace legal, financial, medical, cybersecurity, or compliance advice.
+## First Real Customer Service Index
+
+For the controlled first real customer Structural Report service, start here:
+
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md)
+
+This index links the public service page, request instructions, and readiness notice for the manual SCA-Unit Structural Report service.
