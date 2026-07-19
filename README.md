@@ -137,3 +137,20 @@ Read the public launch announcement for the manual paid SCA-Unit Structural Repo
 Launch announcement: [PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md](PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md)
 
 This public announcement uses only the public SCA-Unit workflow and does not expose AMNE internals or protected structural architecture.
+## First Real Customer Structural Report Service
+
+SCA-Unit is ready for a controlled first real customer request for the manual Structural Report service.
+
+Public service page:
+
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_PAGE_UPDATE_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_PAGE_UPDATE_V1.md)
+
+Request instructions:
+
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_REQUEST_INSTRUCTIONS_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_REQUEST_INSTRUCTIONS_V1.md)
+
+This controlled service compares exactly two JSON structural state files and turns the result into a readable structural report.
+
+Please do not submit passwords, API keys, tokens, private keys, credentials, confidential secrets, sensitive personal data, or unrelated private documents.
+
+SCA-Unit provides a structural comparison report. It is not intended to replace legal, financial, medical, cybersecurity, or compliance advice.
