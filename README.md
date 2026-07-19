@@ -9,18 +9,8 @@ Unlike a generic text diff tool, SCA-Unit focuses on structural relationships, c
 Public overview:
 
 - [docs/structural_assessment_engine_public_overview.md](docs/structural_assessment_engine_public_overview.md)
-It accepts two structural descriptions in JSON format and produces a deterministic assessment report containing:
-
-- Node similarity
-- Edge similarity
-- Structural compatibility
-- Shared-domain conflict
-- A structural verdict
-
-The current public prototype intentionally excludes proprietary structural consolidation, optimization, self-evolution, and protected decision mechanisms.
 
 ---
-
 ## Current Version
 
 0.4.0
