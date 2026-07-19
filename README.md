@@ -178,3 +178,12 @@ Pricing alignment file:
 - [SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md)
 
 The service compares exactly two JSON structural state files and produces a readable structural report.
+## First Real Customer Public Operation Notice
+
+SCA-Unit is publicly ready to receive a first suitable customer request under controlled manual operation.
+
+Operation start notice:
+
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md)
+
+The first suitable customer request must remain limited to exactly two JSON structural state files and must pass the acceptance checklist before work begins.
