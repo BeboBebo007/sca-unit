@@ -196,3 +196,32 @@ Final operation index:
 - [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md)
 
 This index collects the public service materials, operation control files, simulation confirmations, pricing, and acceptance boundaries for controlled manual operation.
+## First Revenue Path
+
+SCA-Unit now includes a controlled first revenue path for the manual Structural Report service.
+
+First revenue path:
+
+- [SCA_UNIT_FIRST_REVENUE_PATH_CONSOLIDATION_V1.md](SCA_UNIT_FIRST_REVENUE_PATH_CONSOLIDATION_V1.md)
+
+Revenue readiness checklist:
+
+- [SCA_UNIT_FIRST_REVENUE_READINESS_CHECKLIST_V1.md](SCA_UNIT_FIRST_REVENUE_READINESS_CHECKLIST_V1.md)
+
+Manual operation record:
+
+- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_RECORD_V1.md](SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_RECORD_V1.md)
+
+Manual operation Go gate:
+
+- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_GO_GATE_V1.md](SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_GO_GATE_V1.md)
+
+Manual operation start notice:
+
+- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_START_NOTICE_V1.md](SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_START_NOTICE_V1.md)
+
+Preferred first revenue offer:
+
+- Standard Report: 29 EUR
+
+This revenue path is manual and controlled. It does not include automated checkout, subscriptions, enterprise billing, or tax handling.
