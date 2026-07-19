@@ -187,3 +187,12 @@ Operation start notice:
 - [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md)
 
 The first suitable customer request must remain limited to exactly two JSON structural state files and must pass the acceptance checklist before work begins.
+## First Real Customer Public Operation Final Index
+
+SCA-Unit now includes a final public operation index for the first suitable customer Structural Report request.
+
+Final operation index:
+
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md)
+
+This index collects the public service materials, operation control files, simulation confirmations, pricing, and acceptance boundaries for controlled manual operation.
