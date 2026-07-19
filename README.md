@@ -1,7 +1,14 @@
 # SCA-Unit
 
-SCA-Unit is a structural assessment prototype designed to compare two system representations as structures rather than as isolated values.
+SCA-Unit is a JSON-first Structural Assessment Engine for comparing two structured states and producing a deterministic structural compatibility assessment.
 
+The current public implementation accepts two JSON structural state files and reports node similarity, edge similarity, structural compatibility, shared-domain conflict, and a structural verdict.
+
+Unlike a generic text diff tool, SCA-Unit focuses on structural relationships, compatibility signals, and explainable change between structured representations.
+
+Public overview:
+
+- [docs/structural_assessment_engine_public_overview.md](docs/structural_assessment_engine_public_overview.md)
 It accepts two structural descriptions in JSON format and produces a deterministic assessment report containing:
 
 - Node similarity
