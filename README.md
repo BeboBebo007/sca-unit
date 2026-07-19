@@ -161,3 +161,20 @@ For the controlled first real customer Structural Report service, start here:
 - [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md)
 
 This index links the public service page, request instructions, and readiness notice for the manual SCA-Unit Structural Report service.
+## First Real Customer Pricing
+
+The controlled first customer Structural Report service uses simple initial pricing:
+
+- Basic Report: 9 EUR
+- Standard Report: 29 EUR
+- Expert Report: 79 EUR
+
+Recommended first customer tier:
+
+- Standard Report: 29 EUR
+
+Pricing alignment file:
+
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md)
+
+The service compares exactly two JSON structural state files and produces a readable structural report.
