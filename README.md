@@ -231,3 +231,12 @@ External documentation index:
 - [docs/external_documentation_index.md](docs/external_documentation_index.md)
 
 This index links the public structural assessment overview, README alignment records, public operation records, and first revenue path records.
+## Documentation Surface Closure
+
+SCA-Unit includes a final closure record for the current external documentation surface.
+
+Documentation surface closure:
+
+- [SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md](SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md)
+
+This closure confirms that the current public documentation surface is stable for the JSON-first Structural Assessment Engine positioning.
