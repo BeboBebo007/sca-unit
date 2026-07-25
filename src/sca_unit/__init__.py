@@ -1,4 +1,4 @@
-﻿"""SCA-Unit public package interface."""
+"""SCA-Unit public package interface."""
 
 from .assessment import StructuralAssessment, assess_structures
 from .models import StructuralState
@@ -17,4 +17,4 @@ __all__ = [
     "validate_typed_relations",
 ]
 
-__version__ = "0.4.0"
+__version__ = "0.5.0"
