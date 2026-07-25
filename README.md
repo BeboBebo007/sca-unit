@@ -240,3 +240,14 @@ Documentation surface closure:
 - [SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md](SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md)
 
 This closure confirms that the current public documentation surface is stable for the JSON-first Structural Assessment Engine positioning.
+## Typed Relation Conflict Engine
+
+SCA-Unit now includes a minimal typed relation conflict engine as a public Python API feature.
+
+It detects relationship-level conflicts such as changed relation type, reversed direction, removed required relation, and changed required status.
+
+Documentation:
+
+- [docs/typed_relation_conflict_engine.md](docs/typed_relation_conflict_engine.md)
+
+This feature is currently available through Python imports and is not yet integrated into the command line interface.
