@@ -1,10 +1,9 @@
-from .assessment import StructuralAssessment, assess_structures
-from .models import StructuralState
+﻿"""SCA-Unit public package interface."""
 
-__all__ = [
-    "StructuralAssessment",
-    "StructuralState",
-    "assess_structures",
-]
-
-__version__ = "0.4.0"
+try:
+    from .typed_relations import (
+        count_typed_relation_conflicts,
+        detect_typed_relation_conflicts,
+    )
+except Exception:
+    pass
