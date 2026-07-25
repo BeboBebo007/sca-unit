@@ -1,4 +1,4 @@
-﻿"""Typed relation conflict detection for SCA-Unit.
+"""Typed relation conflict detection for SCA-Unit.
 
 This module provides a small deterministic engine for detecting conflicts
 between typed relations represented as dictionaries.
@@ -138,3 +138,51 @@ def count_typed_relation_conflicts(
     """Return the number of detected typed relation conflicts."""
 
     return len(detect_typed_relation_conflicts(first_relations, second_relations))
+
+REQUIRED_RELATION_FIELDS = ("source", "target", "type", "required")
+
+
+def validate_typed_relations(
+    relations: Iterable[Relation],
+) -> Dict[str, Any]:
+    """Validate typed relation inputs without raising exceptions.
+
+    Returns:
+    - valid_relations
+    - invalid_relations
+    - validation_errors
+    """
+
+    valid_relations: List[Relation] = []
+    invalid_relations: List[Relation] = []
+    validation_errors: List[Dict[str, Any]] = []
+
+    for index, relation in enumerate(list(relations or [])):
+        missing_fields = [
+            field for field in REQUIRED_RELATION_FIELDS if field not in relation
+        ]
+
+        if missing_fields:
+            invalid_relations.append(relation)
+
+            for field in missing_fields:
+                validation_errors.append(
+                    {
+                        "relation_index": index,
+                        "missing_field": field,
+                        "message": (
+                            "Typed relation is missing required field: "
+                            f"{field}"
+                        ),
+                    }
+                )
+
+            continue
+
+        valid_relations.append(relation)
+
+    return {
+        "valid_relations": valid_relations,
+        "invalid_relations": invalid_relations,
+        "validation_errors": validation_errors,
+    }
