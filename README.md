@@ -13,7 +13,7 @@ Public overview:
 ---
 ## Current Version
 
-0.4.0
+0.5.0
 
 ## Local Demo Package
 
@@ -101,7 +101,7 @@ It is intended for developers, reviewers, and technical teams who need to unders
 
 Install:
 
-    pip install sca-unit==0.4.0
+    pip install sca-unit==0.5.0
 
 Quick command:
 
