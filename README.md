@@ -251,3 +251,12 @@ Documentation:
 - [docs/typed_relation_conflict_engine.md](docs/typed_relation_conflict_engine.md)
 
 This feature is currently available through Python imports and is not yet integrated into the command line interface.
+## Typed Relation Validation
+
+SCA-Unit includes a public validation helper for typed relation inputs.
+
+Documentation:
+
+- [docs/typed_relation_validation.md](docs/typed_relation_validation.md)
+
+This helper separates valid relations, invalid relations, and validation errors before deeper typed relation analysis.
