@@ -262,3 +262,14 @@ Documentation:
 This helper separates valid relations, invalid relations, and validation errors before deeper typed relation analysis.
 
 - [Typed Relation Report Formatter](docs/typed_relation_report_formatter.md)
+
+## Typed Relation Report Formatter Example
+
+A runnable example for the typed relation report formatter is available here:
+
+- [Typed Relation Report Formatter Example](examples/typed_relation_report_formatter_example.py)
+
+This example shows how to:
+- validate typed relations
+- detect typed relation conflicts
+- format the findings as a human-readable report section
