@@ -186,3 +186,57 @@ def validate_typed_relations(
         "invalid_relations": invalid_relations,
         "validation_errors": validation_errors,
     }
+def _typed_relation_conflict_explanation(conflict_type: str) -> str:
+    explanations = {
+        "relation_type_changed": "The relation between the same source and target exists in both structures, but the relation type changed.",
+        "required_status_changed": "The relation between the same source and target exists in both structures, but the required status changed.",
+        "relation_direction_reversed": "A relation appears in reversed direction between the two structures.",
+        "required_relation_removed": "A required relation exists in the first structure but is missing from the second structure.",
+    }
+    return explanations.get(conflict_type, "A typed relation difference was detected.")
+
+
+def _typed_relation_conflict_interpretation(conflict_type: str) -> str:
+    interpretations = {
+        "relation_type_changed": "This may indicate a meaningful architectural or dependency change.",
+        "required_status_changed": "This may indicate that a previously required structural dependency changed its role.",
+        "relation_direction_reversed": "This may indicate that dependency direction or responsibility changed.",
+        "required_relation_removed": "This may indicate that a required structural dependency was removed.",
+    }
+    return interpretations.get(conflict_type, "Review this relation change in the structural context.")
+
+
+def format_typed_relation_report_section(conflicts, validation_errors=None):
+    """Format typed relation conflicts as a human-readable report section."""
+    validation_errors = validation_errors or []
+
+    lines = ["Typed Relation Findings"]
+
+    if validation_errors:
+        lines.append("")
+        lines.append("Validation warning:")
+        for error in validation_errors:
+            lines.append(f"- {error}")
+
+    if not conflicts:
+        lines.append("")
+        lines.append("No typed relation conflicts were detected.")
+        return "\n".join(lines)
+
+    lines.append("")
+    lines.append(f"Total typed relation conflicts: {len(conflicts)}")
+
+    for index, conflict in enumerate(conflicts, start=1):
+        conflict_type = conflict.get("conflict_type", "unknown")
+        source = conflict.get("source", conflict.get("first_source", "unknown"))
+        target = conflict.get("target", conflict.get("first_target", "unknown"))
+
+        lines.append("")
+        lines.append(f"Finding {index}")
+        lines.append(f"Conflict type: {conflict_type}")
+        lines.append(f"Source: {source}")
+        lines.append(f"Target: {target}")
+        lines.append(f"Explanation: {_typed_relation_conflict_explanation(conflict_type)}")
+        lines.append(f"Interpretation: {_typed_relation_conflict_interpretation(conflict_type)}")
+
+    return "\n".join(lines)
