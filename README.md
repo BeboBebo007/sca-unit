@@ -260,3 +260,5 @@ Documentation:
 - [docs/typed_relation_validation.md](docs/typed_relation_validation.md)
 
 This helper separates valid relations, invalid relations, and validation errors before deeper typed relation analysis.
+
+- [Typed Relation Report Formatter](docs/typed_relation_report_formatter.md)
