@@ -140,11 +140,11 @@ SCA-Unit is ready for a controlled first real customer request for the manual St
 
 Public service page:
 
-- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_PAGE_UPDATE_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_PAGE_UPDATE_V1.md)
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_PAGE_UPDATE_V1.md](docs/service_records/SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_PAGE_UPDATE_V1.md)
 
 Request instructions:
 
-- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_REQUEST_INSTRUCTIONS_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_REQUEST_INSTRUCTIONS_V1.md)
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_REQUEST_INSTRUCTIONS_V1.md](docs/service_records/SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_REQUEST_INSTRUCTIONS_V1.md)
 
 This controlled service compares exactly two JSON structural state files and turns the result into a readable structural report.
 
@@ -155,7 +155,7 @@ SCA-Unit provides a structural comparison report. It is not intended to replace 
 
 For the controlled first real customer Structural Report service, start here:
 
-- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md)
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md](docs/service_records/SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_SERVICE_INDEX_V1.md)
 
 This index links the public service page, request instructions, and readiness notice for the manual SCA-Unit Structural Report service.
 ## First Real Customer Pricing
@@ -172,7 +172,7 @@ Recommended first customer tier:
 
 Pricing alignment file:
 
-- [SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md)
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md](docs/service_records/SCA_UNIT_FIRST_REAL_CUSTOMER_SERVICE_PRICING_ALIGNMENT_V1.md)
 
 The service compares exactly two JSON structural state files and produces a readable structural report.
 ## First Real Customer Public Operation Notice
@@ -181,7 +181,7 @@ SCA-Unit is publicly ready to receive a first suitable customer request under co
 
 Operation start notice:
 
-- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md)
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md](docs/service_records/SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_START_NOTICE_V1.md)
 
 The first suitable customer request must remain limited to exactly two JSON structural state files and must pass the acceptance checklist before work begins.
 ## First Real Customer Public Operation Final Index
@@ -190,7 +190,7 @@ SCA-Unit now includes a final public operation index for the first suitable cust
 
 Final operation index:
 
-- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md](SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md)
+- [SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md](docs/service_records/SCA_UNIT_FIRST_REAL_CUSTOMER_PUBLIC_OPERATION_FINAL_INDEX_V1.md)
 
 This index collects the public service materials, operation control files, simulation confirmations, pricing, and acceptance boundaries for controlled manual operation.
 ## First Revenue Path
@@ -199,23 +199,23 @@ SCA-Unit now includes a controlled first revenue path for the manual Structural 
 
 First revenue path:
 
-- [SCA_UNIT_FIRST_REVENUE_PATH_CONSOLIDATION_V1.md](SCA_UNIT_FIRST_REVENUE_PATH_CONSOLIDATION_V1.md)
+- [SCA_UNIT_FIRST_REVENUE_PATH_CONSOLIDATION_V1.md](docs/service_records/SCA_UNIT_FIRST_REVENUE_PATH_CONSOLIDATION_V1.md)
 
 Revenue readiness checklist:
 
-- [SCA_UNIT_FIRST_REVENUE_READINESS_CHECKLIST_V1.md](SCA_UNIT_FIRST_REVENUE_READINESS_CHECKLIST_V1.md)
+- [SCA_UNIT_FIRST_REVENUE_READINESS_CHECKLIST_V1.md](docs/service_records/SCA_UNIT_FIRST_REVENUE_READINESS_CHECKLIST_V1.md)
 
 Manual operation record:
 
-- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_RECORD_V1.md](SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_RECORD_V1.md)
+- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_RECORD_V1.md](docs/service_records/SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_RECORD_V1.md)
 
 Manual operation Go gate:
 
-- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_GO_GATE_V1.md](SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_GO_GATE_V1.md)
+- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_GO_GATE_V1.md](docs/service_records/SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_GO_GATE_V1.md)
 
 Manual operation start notice:
 
-- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_START_NOTICE_V1.md](SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_START_NOTICE_V1.md)
+- [SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_START_NOTICE_V1.md](docs/service_records/SCA_UNIT_FIRST_REVENUE_MANUAL_OPERATION_START_NOTICE_V1.md)
 
 Preferred first revenue offer:
 
