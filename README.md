@@ -237,7 +237,7 @@ SCA-Unit includes a final closure record for the current external documentation 
 
 Documentation surface closure:
 
-- [SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md](SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md)
+- [SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md](docs/repository_surface/SCA_UNIT_DOCUMENTATION_SURFACE_FINAL_CLOSURE_V1.md)
 
 This closure confirms that the current public documentation surface is stable for the JSON-first Structural Assessment Engine positioning.
 ## Typed Relation Conflict Engine
