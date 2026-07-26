@@ -123,7 +123,7 @@ This public service layer uses SCA-Unit outputs only and remains limited to the 
 
 SCA-Unit also supports a manual paid structural report service based on two customer-provided JSON structural state files.
 
-Read the service page: [PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md](PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md)
+Read the service page: [PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md](docs/release_records/PAID_REPORT_PUBLIC_PAGE_FINAL_VERSION.md)
 
 This public service page uses only the documented public SCA-Unit workflow.
 
@@ -131,7 +131,7 @@ This public service page uses only the documented public SCA-Unit workflow.
 
 Read the public launch announcement for the manual paid SCA-Unit Structural Report service.
 
-Launch announcement: [PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md](PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md)
+Launch announcement: [PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md](docs/release_records/PAID_REPORT_PUBLIC_LAUNCH_ANNOUNCEMENT_FINAL_VERSION.md)
 
 This public announcement uses only the documented public SCA-Unit workflow.
 ## First Real Customer Structural Report Service
