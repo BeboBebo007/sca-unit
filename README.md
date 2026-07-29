@@ -52,21 +52,23 @@ Example:
 
 ## Python usage
 
+    from sca_unit import StructuralState
     from sca_unit import assess_structures
 
-    first = {
-        "nodes": ["api", "database"],
-        "edges": [["api", "database"]],
-    }
+    first = StructuralState(
+        identity="baseline",
+        nodes={"api", "database"},
+        edges={("api", "database")},
+    )
 
-    second = {
-        "nodes": ["api", "cache"],
-        "edges": [["api", "cache"]],
-    }
+    second = StructuralState(
+        identity="changed",
+        nodes={"api", "cache"},
+        edges={("api", "cache")},
+    )
 
     result = assess_structures(first, second)
     print(result)
-
 ## Typed relation checks
 
 SCA-Unit also supports typed relation comparison.
