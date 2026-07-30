@@ -1,3 +1,0 @@
-﻿malformed_json_status=400
-invalid_content_type_status=415
-result=passed

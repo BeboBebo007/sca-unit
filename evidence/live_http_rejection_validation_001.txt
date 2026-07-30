@@ -1,3 +1,0 @@
-﻿wrong_api_key_status=401
-missing_payload_field_status=400
-result=passed
