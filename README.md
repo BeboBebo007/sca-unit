@@ -179,7 +179,7 @@ It is a lightweight structural comparison package that can be used as a building
 
 Current public version:
 
-    0.5.1
+    0.5.2
 
 The package is usable from PyPI and includes a command line interface, Python API, typed relation checks, examples, and tests.
 
@@ -188,3 +188,4 @@ The package is usable from PyPI and includes a command line interface, Python AP
 The project aims to stay practical, deterministic, and clear.
 
 It should not overstate what it does. The public package should be easy to install, easy to inspect, and easy to test.
+
