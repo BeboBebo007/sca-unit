@@ -1,4 +1,0 @@
-﻿health_status=ok
-input_mode=direct-structural-payload
-oversized_request_status=413
-result=passed

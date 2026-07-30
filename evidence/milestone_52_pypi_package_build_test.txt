@@ -1,8 +1,0 @@
-﻿Milestone 52 - PyPI Package Build Test
-Status: passed
-Built files: sca_unit-0.3.0.tar.gz and sca_unit-0.3.0-py3-none-any.whl
-Wheel install: passed
-Import test: sca_unit wheel install OK
-CLI test: sca-unit --help passed
-Secret scan: no evidence, product, reusable_service, private_server, env, secret, or key entries found
-Conclusion: public PyPI package build is clean for the non-proprietary SCA-Unit prototype
