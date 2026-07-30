@@ -147,10 +147,10 @@ Historical project records are organized under:
 
 Runnable examples are available in the examples/ folder.
 
-Example:
+Examples:
 
+    python examples/structural_assessment_example.py
     python examples/typed_relation_report_formatter_example.py
-
 ## Tests
 
 Run the test suite with:
