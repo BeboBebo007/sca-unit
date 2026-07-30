@@ -138,7 +138,6 @@ Useful entry points:
 Historical project records are organized under:
 
 - docs/release_records/
-- docs/service_records/
 - docs/project_records/
 - docs/archive_records/
 - docs/repository_surface/
